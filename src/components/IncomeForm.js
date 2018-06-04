@@ -66,9 +66,9 @@ class IncomeForm extends React.Component {
     this.props.incomeSubmit({
       title: this.state.title,
       amount: parseFloat(this.state.amount, 10) * 100,
-      created: this.state.created,
-      description: this.state.description,
-      categories: this.state.categories
+      created: this.state.created.valueOf(),
+      description: this.state.description
+      // categories: this.state.categories
     });
   };
 
@@ -102,11 +102,11 @@ class IncomeForm extends React.Component {
             onChange={this.onDescriptionChange}
             value={this.state.description}
           />
-          <input
+          {/* <input
             placeholder="Categories"
             onChange={this.onCategoriesChange}
             value={this.state.categories}
-          />
+          /> */}
 
           <button>Add</button>
         </form>

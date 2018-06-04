@@ -13,10 +13,7 @@ export default (
 ) => {
   switch (action.type) {
     case ADD_INCOME:
-      return {
-        ...state,
-        income: action.income
-      };
+      return [...state, action.income];
     default:
       return state;
   }

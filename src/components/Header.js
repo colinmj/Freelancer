@@ -16,6 +16,9 @@ const Header = ({ startLogout }) => (
     <NavLink to="/addexpense" activeClassName="is-active">
       Add Expense
     </NavLink>
+    <NavLink to="/categories" activeClassName="is-active">
+      Add My Categories
+    </NavLink>
     <button onClick={startLogout}>Logout</button>
   </header>
 );

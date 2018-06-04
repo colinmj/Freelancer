@@ -66,7 +66,7 @@ class ExpenseForm extends React.Component {
     this.props.expenseSubmit({
       title: this.state.title,
       amount: parseFloat(this.state.amount, 10) * 100,
-      created: this.state.created,
+      created: this.state.created.valueOf(),
       description: this.state.description,
       categories: this.state.categories
     });
