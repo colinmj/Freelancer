@@ -13,7 +13,7 @@ const Header = ({ startLogout }) => (
       Add Income
     </NavLink>
 
-    <NavLink to="/help" activeClassName="is-active">
+    <NavLink to="/addexpense" activeClassName="is-active">
       Add Expense
     </NavLink>
     <button onClick={startLogout}>Logout</button>
@@ -24,7 +24,4 @@ const mapDispatchtToProps = dispatch => ({
   startLogout: () => dispatch(startLogout())
 });
 
-export default connect(
-  undefined,
-  mapDispatchtToProps
-)(Header);
+export default connect(undefined, mapDispatchtToProps)(Header);

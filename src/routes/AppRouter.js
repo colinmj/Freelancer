@@ -7,6 +7,7 @@ import Login from '../components/Login';
 import Expenses from '../containers/Expenses';
 import Income from '../containers/Income';
 import AddIncome from '../containers/AddIncome';
+import AddExpense from '../containers/AddExpense';
 import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -26,6 +27,7 @@ const AppRouter = () => (
         <PrivateRoute path="/expenses" component={Expenses} exact={true} />
         <PrivateRoute path="/income" component={Income} exact={true} />
         <PrivateRoute path="/addincome" component={AddIncome} exact={true} />
+        <PrivateRoute path="/addexpense" component={AddExpense} exact={true} />
 
         <Route component={NotFoundPage} />
       </Switch>
