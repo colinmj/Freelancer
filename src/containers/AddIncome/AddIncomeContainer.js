@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import AddIncome from './AddIncome';
-import { addIncome } from '../../redux/modules/income';
+import { asyncAddIncome } from '../../redux/modules/income';
 
 class AddIncomeContainer extends React.Component {
   incomeSubmit = income => {
     console.log(income);
-    this.props.dispatch(addIncome(income));
+    this.props.dispatch(asyncAddIncome(income));
   };
   render() {
     return <AddIncome incomeSubmit={this.incomeSubmit} />;

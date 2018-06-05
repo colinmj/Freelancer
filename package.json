@@ -12,6 +12,7 @@
     "heroku-postbuild": "yarn run build:prod"
   },
   "dependencies": {
+    "@material-ui/core": "^1.2.0",
     "babel-cli": "6.24.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
@@ -27,7 +28,8 @@
     "moment": "^2.22.1",
     "node-sass": "^4.9.0",
     "numeral": "2.0.6",
-    "react": "^16.3.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
     "react-addons-shallow-compare": "^15.6.2",
     "react-dates": "^16.6.1",
     "react-dom": "^16.3.1",

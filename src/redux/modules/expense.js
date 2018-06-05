@@ -38,7 +38,7 @@ export const asyncAddExpense = expenseData => {
   };
 };
 
-export const startSetExpenses = () => {
+export const asyncSetExpenses = () => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
     return db

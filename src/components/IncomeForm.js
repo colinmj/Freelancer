@@ -3,6 +3,11 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import { connect } from 'react-redux';
+
+import MultiSelect from '../components/MultiSelect';
+
+import { setSelectedCategories } from '../redux/modules/categories';
 
 class IncomeForm extends React.Component {
   constructor(props) {
@@ -12,7 +17,7 @@ class IncomeForm extends React.Component {
       amount: '',
       created: moment(),
       description: '',
-      categories: '',
+      selectedCategories: [],
       calendarFocused: false,
       error: ''
     };
@@ -53,12 +58,26 @@ class IncomeForm extends React.Component {
     });
   };
 
-  onCategoriesChange = e => {
-    const categoriesString = e.target.value;
-    const categories = categoriesString.split(' ');
-    this.setState({
-      categories
-    });
+  // onCategoriesChange = e => {
+  //   const value = e.target.value;
+  //   this.setState({
+  //     categories: this.state.categories.concat(value)
+  //   });
+  // };
+
+  onCategoriesChange = selectedOption => {
+    this.props.dispatch(setSelectedCategories(selectedOption));
+  };
+  // onCategoriesChange = () => {
+  //   console.log('hi');
+  // };
+
+  renderOptions = () => {
+    return ['apples', 'oranges', 'bananas', 'kiwis'].map(option => (
+      <option key={option} value={option}>
+        {option}
+      </option>
+    ));
   };
 
   onSubmitForm = e => {
@@ -68,7 +87,6 @@ class IncomeForm extends React.Component {
       amount: parseFloat(this.state.amount, 10) * 100,
       created: this.state.created.valueOf(),
       description: this.state.description
-      // categories: this.state.categories
     });
   };
 
@@ -102,11 +120,7 @@ class IncomeForm extends React.Component {
             onChange={this.onDescriptionChange}
             value={this.state.description}
           />
-          {/* <input
-            placeholder="Categories"
-            onChange={this.onCategoriesChange}
-            value={this.state.categories}
-          /> */}
+          <MultiSelect onCategoriesChange={this.onCategoriesChange} />
 
           <button>Add</button>
         </form>
@@ -115,4 +129,15 @@ class IncomeForm extends React.Component {
   }
 }
 
-export default IncomeForm;
+const mapStateToProps = state => ({
+  selectedCategories: state.categories.selectedCategories
+});
+
+export default connect(mapStateToProps)(IncomeForm);
+
+// <select multiple={true} onChange={this.onCategoriesChange}>
+// <option value="gig">Gig</option>
+// <option value="dev">Dev</option>
+// <option value="groceries">Groceries</option>
+// <option value="cheese">Cheese</option>
+// </select>
