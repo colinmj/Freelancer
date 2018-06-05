@@ -5,9 +5,13 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import { connect } from 'react-redux';
 
-import MultiSelect from '../components/MultiSelect';
+// import MultiSelect from '../components/MultiSelect';
 
-import { setSelectedCategories } from '../redux/modules/categories';
+import {
+  setSelectedCategories,
+  asyncAddCategories
+} from '../redux/modules/categories';
+import { objectToArray } from '../helpers/category';
 
 class IncomeForm extends React.Component {
   constructor(props) {
@@ -19,6 +23,7 @@ class IncomeForm extends React.Component {
       description: '',
       selectedCategories: [],
       calendarFocused: false,
+      categories: '',
       error: ''
     };
   }
@@ -58,26 +63,25 @@ class IncomeForm extends React.Component {
     });
   };
 
-  // onCategoriesChange = e => {
-  //   const value = e.target.value;
-  //   this.setState({
-  //     categories: this.state.categories.concat(value)
-  //   });
-  // };
-
-  onCategoriesChange = selectedOption => {
-    this.props.dispatch(setSelectedCategories(selectedOption));
+  onCategoriesChange = e => {
+    const categoriesString = e.target.value;
+    const categories = categoriesString.split(',');
+    this.setState({
+      categories
+    });
   };
-  // onCategoriesChange = () => {
-  //   console.log('hi');
+
+  // onCategoriesChange = selectedOption => {
+  //   this.props.dispatch(setSelectedCategories(selectedOption));
   // };
 
-  renderOptions = () => {
-    return ['apples', 'oranges', 'bananas', 'kiwis'].map(option => (
-      <option key={option} value={option}>
-        {option}
-      </option>
-    ));
+  renderCategories = arr => {
+    let newArr = [];
+    arr.map(array => {
+      newArr.push(Object.values(array));
+    });
+    const merged = [].concat.apply([], newArr);
+    return merged;
   };
 
   onSubmitForm = e => {
@@ -86,12 +90,29 @@ class IncomeForm extends React.Component {
       title: this.state.title,
       amount: parseFloat(this.state.amount, 10) * 100,
       created: this.state.created.valueOf(),
-      description: this.state.description
+      description: this.state.description,
+      categories: this.state.categories
     });
+    this.props.dispatch(asyncAddCategories(this.state.categories));
   };
 
   render() {
-    console.log(this.state.title);
+    const names = [
+      'Oliver Hansen',
+      'Van Henry',
+      'April Tucker',
+      'Ralph Hubbard',
+      'Omar Alexander',
+      'Carlos Abbott',
+      'Miriam Wagner',
+      'Bradley Wilkerson',
+      'Virginia Andrews',
+      'Kelly Snyder'
+    ];
+    const { categories } = this.props;
+    // console.log(this.renderCategories());
+    // console.log(names);
+
     return (
       <div>
         <form onSubmit={this.onSubmitForm}>
@@ -120,7 +141,15 @@ class IncomeForm extends React.Component {
             onChange={this.onDescriptionChange}
             value={this.state.description}
           />
-          <MultiSelect onCategoriesChange={this.onCategoriesChange} />
+          <input
+            placeholder="Categories"
+            onChange={this.onCategoriesChange}
+            value={this.state.categories}
+          />
+          {/* <MultiSelect
+            onCategoriesChange={this.onCategoriesChange}
+            
+          /> */}
 
           <button>Add</button>
         </form>
@@ -130,14 +159,8 @@ class IncomeForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  selectedCategories: state.categories.selectedCategories
+  selectedCategories: state.categories.selectedCategories,
+  categories: state.categories
 });
 
 export default connect(mapStateToProps)(IncomeForm);
-
-// <select multiple={true} onChange={this.onCategoriesChange}>
-// <option value="gig">Gig</option>
-// <option value="dev">Dev</option>
-// <option value="groceries">Groceries</option>
-// <option value="cheese">Cheese</option>
-// </select>

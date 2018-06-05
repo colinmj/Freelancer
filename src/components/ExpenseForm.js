@@ -3,6 +3,15 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import { connect } from 'react-redux';
+
+// import MultiSelect from '../components/MultiSelect';
+
+import {
+  setSelectedCategories,
+  asyncAddCategories
+} from '../redux/modules/categories';
+import { objectToArray } from '../helpers/category';
 
 class ExpenseForm extends React.Component {
   constructor(props) {
@@ -12,8 +21,9 @@ class ExpenseForm extends React.Component {
       amount: '',
       created: moment(),
       description: '',
-      categories: '',
+      selectedCategories: [],
       calendarFocused: false,
+      categories: '',
       error: ''
     };
   }
@@ -55,10 +65,23 @@ class ExpenseForm extends React.Component {
 
   onCategoriesChange = e => {
     const categoriesString = e.target.value;
-    const categories = categoriesString.split(' ');
+    const categories = categoriesString.split(',');
     this.setState({
       categories
     });
+  };
+
+  // onCategoriesChange = selectedOption => {
+  //   this.props.dispatch(setSelectedCategories(selectedOption));
+  // };
+
+  renderCategories = arr => {
+    let newArr = [];
+    arr.map(array => {
+      newArr.push(Object.values(array));
+    });
+    const merged = [].concat.apply([], newArr);
+    return merged;
   };
 
   onSubmitForm = e => {
@@ -70,10 +93,26 @@ class ExpenseForm extends React.Component {
       description: this.state.description,
       categories: this.state.categories
     });
+    this.props.dispatch(asyncAddCategories(this.state.categories));
   };
 
   render() {
-    console.log(this.state.title);
+    const names = [
+      'Oliver Hansen',
+      'Van Henry',
+      'April Tucker',
+      'Ralph Hubbard',
+      'Omar Alexander',
+      'Carlos Abbott',
+      'Miriam Wagner',
+      'Bradley Wilkerson',
+      'Virginia Andrews',
+      'Kelly Snyder'
+    ];
+    const { categories } = this.props;
+    // console.log(this.renderCategories());
+    // console.log(names);
+
     return (
       <div>
         <form onSubmit={this.onSubmitForm}>
@@ -107,6 +146,10 @@ class ExpenseForm extends React.Component {
             onChange={this.onCategoriesChange}
             value={this.state.categories}
           />
+          {/* <MultiSelect
+            onCategoriesChange={this.onCategoriesChange}
+            
+          /> */}
 
           <button>Add</button>
         </form>
@@ -115,4 +158,9 @@ class ExpenseForm extends React.Component {
   }
 }
 
-export default ExpenseForm;
+const mapStateToProps = state => ({
+  selectedCategories: state.categories.selectedCategories,
+  categories: state.categories
+});
+
+export default connect(mapStateToProps)(ExpenseForm);

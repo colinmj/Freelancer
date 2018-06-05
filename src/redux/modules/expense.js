@@ -16,22 +16,23 @@ export const setExpenses = expenses => ({
 export const asyncAddExpense = expenseData => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
-    const {
-      title = '',
-      amount = 0,
-      created = 0,
-      description = ''
-    } = expenseData;
-    const expense = { title, amount, created, description };
+    // const {
+    //   title = '',
+    //   amount = 0,
+    //   created = 0,
+    //   description = '',
+    //   categories = ''
+    // } = expenseData;
+    // const expense = { title, amount, created, description, categories };
 
     return db
       .ref(`users/${uid}/expenses`)
-      .push(expense)
+      .push(expenseData)
       .then(ref => {
         dispatch(
           addExpense({
             id: ref.key,
-            ...expense
+            ...expenseData
           })
         );
       });

@@ -53,6 +53,19 @@ const names = [
   'Kelly Snyder'
 ];
 
+const fillerData = [
+  {
+    name: 'Colin',
+    age: '26',
+    sexy: 'yes'
+  },
+  {
+    name: 'Chris',
+    age: 30,
+    sexy: 'yes'
+  }
+];
+
 class MultipleSelect extends React.Component {
   state = {
     name: []
@@ -61,13 +74,13 @@ class MultipleSelect extends React.Component {
   handleChange = event => {
     this.setState({ name: event.target.value });
 
-    this.state.name.length > 0 &&
-      this.props.onCategoriesChange(event.target.value);
+    this.state.name.length > 0 && this.props.select(event.target.value);
   };
 
   render() {
-    const { classes, theme } = this.props;
-    console.log(this.props);
+    const { classes, theme, categories } = this.props;
+
+    console.log(categories);
     return (
       <div className={classes.root}>
         <FormControl className={classes.formControl}>
@@ -79,20 +92,21 @@ class MultipleSelect extends React.Component {
             input={<Input id="select-multiple" />}
             MenuProps={MenuProps}
           >
-            {names.map(name => (
-              <MenuItem
-                key={name}
-                value={name}
-                style={{
-                  fontWeight:
-                    this.state.name.indexOf(name) === -1
-                      ? theme.typography.fontWeightRegular
-                      : theme.typography.fontWeightMedium
-                }}
-              >
-                {name}
-              </MenuItem>
-            ))}
+            {categories &&
+              categories.map(name => (
+                <MenuItem
+                  key={name}
+                  value={name}
+                  style={{
+                    fontWeight:
+                      this.state.name.indexOf(name) === -1
+                        ? theme.typography.fontWeightRegular
+                        : theme.typography.fontWeightMedium
+                  }}
+                >
+                  {name}
+                </MenuItem>
+              ))}
           </Select>
         </FormControl>
       </div>

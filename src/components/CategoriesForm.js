@@ -9,7 +9,7 @@ class CategoriesForm extends React.Component {
   }
   onCategoriesChange = e => {
     const categoriesString = e.target.value;
-    const categories = categoriesString.split(' ');
+    const categories = categoriesString.split(',');
 
     this.setState({
       categories
