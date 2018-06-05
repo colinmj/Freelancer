@@ -40,41 +40,15 @@ const MenuProps = {
   }
 };
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder'
-];
-
-const fillerData = [
-  {
-    name: 'Colin',
-    age: '26',
-    sexy: 'yes'
-  },
-  {
-    name: 'Chris',
-    age: 30,
-    sexy: 'yes'
-  }
-];
-
 class MultipleSelect extends React.Component {
   state = {
-    name: []
+    categories: []
   };
 
   handleChange = event => {
-    this.setState({ name: event.target.value });
+    this.setState({ categories: event.target.value });
 
-    this.state.name.length > 0 && this.props.select(event.target.value);
+    this.state.categories.length > 0 && this.props.select(event.target.value);
   };
 
   render() {
@@ -87,7 +61,7 @@ class MultipleSelect extends React.Component {
           <InputLabel htmlFor="select-multiple">Name</InputLabel>
           <Select
             multiple
-            value={this.state.name}
+            value={this.state.categories}
             onChange={this.handleChange}
             input={<Input id="select-multiple" />}
             MenuProps={MenuProps}
@@ -99,7 +73,7 @@ class MultipleSelect extends React.Component {
                   value={name}
                   style={{
                     fontWeight:
-                      this.state.name.indexOf(name) === -1
+                      this.state.categories.indexOf(name) === -1
                         ? theme.typography.fontWeightRegular
                         : theme.typography.fontWeightMedium
                   }}

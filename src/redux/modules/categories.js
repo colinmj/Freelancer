@@ -63,7 +63,7 @@ export const asyncSetCategories = () => {
 
 export default (
   state = {
-    categories: {},
+    categories: [],
     selectedCategories: [],
     renderedCategories: []
   },
@@ -73,7 +73,10 @@ export default (
     case ADD_CATEGORIES:
       return [...state, action.categories];
     case SET_CATEGORIES:
-      return action.categories;
+      return {
+        categories: action.categories
+      };
+
     case SELECTED_CATEGORIES:
       return {
         ...state,

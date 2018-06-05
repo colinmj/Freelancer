@@ -9,7 +9,8 @@ import { connect } from 'react-redux';
 
 import {
   setSelectedCategories,
-  asyncAddCategories
+  asyncAddCategories,
+  asyncSetCategories
 } from '../redux/modules/categories';
 import { objectToArray } from '../helpers/category';
 
@@ -71,10 +72,6 @@ class IncomeForm extends React.Component {
     });
   };
 
-  // onCategoriesChange = selectedOption => {
-  //   this.props.dispatch(setSelectedCategories(selectedOption));
-  // };
-
   renderCategories = arr => {
     let newArr = [];
     arr.map(array => {
@@ -94,6 +91,7 @@ class IncomeForm extends React.Component {
       categories: this.state.categories
     });
     this.props.dispatch(asyncAddCategories(this.state.categories));
+    this.props.dispatch(asyncSetCategories());
   };
 
   render() {
@@ -146,10 +144,6 @@ class IncomeForm extends React.Component {
             onChange={this.onCategoriesChange}
             value={this.state.categories}
           />
-          {/* <MultiSelect
-            onCategoriesChange={this.onCategoriesChange}
-            
-          /> */}
 
           <button>Add</button>
         </form>
@@ -160,7 +154,7 @@ class IncomeForm extends React.Component {
 
 const mapStateToProps = state => ({
   selectedCategories: state.categories.selectedCategories,
-  categories: state.categories
+  categories: state.categories.categories
 });
 
 export default connect(mapStateToProps)(IncomeForm);
