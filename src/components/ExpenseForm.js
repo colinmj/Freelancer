@@ -9,7 +9,8 @@ import { connect } from 'react-redux';
 
 import {
   setSelectedCategories,
-  asyncAddCategories
+  asyncAddCategories,
+  asyncSetCategories
 } from '../redux/modules/categories';
 import { objectToArray } from '../helpers/category';
 
@@ -94,21 +95,10 @@ class ExpenseForm extends React.Component {
       categories: this.state.categories
     });
     this.props.dispatch(asyncAddCategories(this.state.categories));
+    this.props.dispatch(asyncSetCategories());
   };
 
   render() {
-    const names = [
-      'Oliver Hansen',
-      'Van Henry',
-      'April Tucker',
-      'Ralph Hubbard',
-      'Omar Alexander',
-      'Carlos Abbott',
-      'Miriam Wagner',
-      'Bradley Wilkerson',
-      'Virginia Andrews',
-      'Kelly Snyder'
-    ];
     const { categories } = this.props;
     // console.log(this.renderCategories());
     // console.log(names);
@@ -146,10 +136,6 @@ class ExpenseForm extends React.Component {
             onChange={this.onCategoriesChange}
             value={this.state.categories}
           />
-          {/* <MultiSelect
-            onCategoriesChange={this.onCategoriesChange}
-            
-          /> */}
 
           <button>Add</button>
         </form>
@@ -160,7 +146,7 @@ class ExpenseForm extends React.Component {
 
 const mapStateToProps = state => ({
   selectedCategories: state.categories.selectedCategories,
-  categories: state.categories
+  categories: state.categories.categories
 });
 
 export default connect(mapStateToProps)(ExpenseForm);

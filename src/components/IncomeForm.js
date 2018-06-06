@@ -95,19 +95,7 @@ class IncomeForm extends React.Component {
   };
 
   render() {
-    const names = [
-      'Oliver Hansen',
-      'Van Henry',
-      'April Tucker',
-      'Ralph Hubbard',
-      'Omar Alexander',
-      'Carlos Abbott',
-      'Miriam Wagner',
-      'Bradley Wilkerson',
-      'Virginia Andrews',
-      'Kelly Snyder'
-    ];
-    const { categories } = this.props;
+    // const { categories } = this.props;
     // console.log(this.renderCategories());
     // console.log(names);
 

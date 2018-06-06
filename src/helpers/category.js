@@ -17,9 +17,7 @@ export const objectToArray = arr => {
     newArr.push(Object.values(array));
   });
   const merged = [].concat.apply([], newArr);
-  return merged;
-};
-
-export const hello = arr => {
-  return arr.map(x => console.log(x));
+  return merged.filter((item, index) => {
+    return merged.indexOf(item) === index;
+  });
 };

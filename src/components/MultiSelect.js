@@ -47,7 +47,6 @@ class MultipleSelect extends React.Component {
 
   handleChange = event => {
     this.setState({ categories: event.target.value });
-
     this.state.categories.length > 0 && this.props.select(event.target.value);
   };
 
