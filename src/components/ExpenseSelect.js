@@ -1,13 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import { filterIncome } from '../redux/modules/income';
+import { filterExpenses } from '../redux/modules/expense';
 
 class MultipleSelect extends React.Component {
   state = {
@@ -17,11 +15,12 @@ class MultipleSelect extends React.Component {
   componentDidMount() {}
 
   handleChange = (event, index, values) => {
-    this.props.dispatch(filterIncome(event.target.value));
+    this.props.dispatch(filterExpenses(event.target.value));
+    console.log(this.props);
   };
 
   render() {
-    const { selected, income, categories } = this.props;
+    const { selected, expenses, categories } = this.props;
 
     return (
       <div>
@@ -43,8 +42,8 @@ class MultipleSelect extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  income: state.income,
-  selected: state.income.selectedCategories
+  expenses: state.income,
+  selected: state.expense.selectedCategories
 });
 
 export default connect(mapStateToProps)(MultipleSelect);

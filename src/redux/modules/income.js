@@ -68,7 +68,7 @@ export default (
       return {
         ...state,
         income: action.income
-      }
+      };
     case SET_INCOME:
       return {
         ...state,

@@ -18,14 +18,28 @@ class ExpensesContainer extends React.Component {
     this.props.dispatch(setRenderedCategories(cats));
   }
   render() {
-    return <Expenses />;
+    const { expenses, renderedCategories, selectedCategories } = this.props;
+
+    let filtered =
+      expenses.length &&
+      expenses.filter(item =>
+        item.categories.find(i => selectedCategories.includes(i))
+      );
+
+    return (
+      <Expenses
+        expenses={selectedCategories.length === 0 ? expenses : filtered}
+        categories={renderedCategories}
+      />
+    );
   }
 }
 
 const mapStateToProps = state => ({
-  expenses: state.expense,
+  expenses: state.expense.expense,
   categories: state.categories.categories,
-  renderedCategories: state.categories.renderedCategories
+  renderedCategories: state.categories.renderedCategories,
+  selectedCategories: state.expense.selectedCategories
 });
 
 export default connect(mapStateToProps)(ExpensesContainer);

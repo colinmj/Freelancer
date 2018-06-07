@@ -1,5 +1,5 @@
 import React from 'react';
-import MultiSelect from '../../components/MultiSelect';
+import MultiSelect from '../../components/IncomeSelect';
 import IncomeList from '../../components/IncomeList';
 
 class Income extends React.Component {
