@@ -6,7 +6,7 @@ const ExpenseList = props => {
   return (
     <div>
       <h1> List of Expenses </h1>
-      {console.log(props.expenses)}
+      {console.log(props)}
       {props.expenses.length > 0 &&
         props.expenses.map(item => {
           return <ListItem {...item} />;
@@ -16,7 +16,8 @@ const ExpenseList = props => {
 };
 
 const mapStateToProps = state => ({
-  expenses: state.expenses
+  expenses: state.expense,
+  selectedCategories: state.categories.selectedCategories
 });
 
-export default connect(mapStateToProps)(IncomeList);
+export default connect(mapStateToProps)(ExpenseList);

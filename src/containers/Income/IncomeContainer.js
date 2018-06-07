@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { asyncSetIncome } from '../../redux/modules/income';
+import { asyncSetIncome, filterIncome } from '../../redux/modules/income';
 import {
   setSelectedCategories,
   setRenderedCategories
 } from '../../redux/modules/categories';
 import Income from './Income';
 import { objectToArray } from '../../helpers/category';
+import { Slide } from '@material-ui/core';
+import { filteredIncome } from '../../helpers/filter';
 
 class IncomeContainer extends React.Component {
   componentDidMount() {
-    console.log('yo');
     this.props.dispatch(asyncSetIncome(this.props.income));
     const cats = this.props.categories
       ? objectToArray(this.props.categories)
@@ -19,17 +20,26 @@ class IncomeContainer extends React.Component {
     this.props.dispatch(setRenderedCategories(cats));
   }
 
-  onCategoriesSelect = selectedOption => {
-    this.props.dispatch(setSelectedCategories(selectedOption));
+  onDispatchSelect = (income, categories) => {
+    const filtered = income.filter(item => {
+      return item.categories.find(i => categories.includes(i));
+    });
+    console.log(filtered);
+
+    this.props.dispatch(filterIncome(filtered));
   };
 
   render() {
-    const { renderedCategories } = this.props;
+    const { renderedCategories, selectedCategories, income } = this.props;
 
     return (
       <Income
-        select={this.onCategoriesSelect}
+        // select={this.onCategoriesSelect}
         categories={renderedCategories}
+        // selected={selectedCategories}
+        // filter={this.onCategoriesSelect}
+        income={income}
+        // dispatchSelect={this.onDispatchSelect}
       />
     );
   }
@@ -38,7 +48,8 @@ class IncomeContainer extends React.Component {
 const mapStateToProps = state => ({
   income: state.income,
   categories: state.categories.categories,
-  renderedCategories: state.categories.renderedCategories
+  renderedCategories: state.categories.renderedCategories,
+  selectedCategories: state.income.selectedCategories
 });
 
 export default connect(mapStateToProps)(IncomeContainer);

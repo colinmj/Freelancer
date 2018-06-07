@@ -2,6 +2,7 @@ import db from '../../firebase/firebase';
 
 const ADD_INCOME = 'ADD_INCOME';
 const SET_INCOME = 'SET_INCOME';
+const FILTER_INCOME = 'FILTER_INCOME';
 
 export const addIncome = income => ({
   type: ADD_INCOME,
@@ -10,6 +11,11 @@ export const addIncome = income => ({
 
 export const setIncome = income => ({
   type: SET_INCOME,
+  income
+});
+
+export const filterIncome = (income = []) => ({
+  type: FILTER_INCOME,
   income
 });
 
@@ -52,7 +58,8 @@ export const asyncSetIncome = () => {
 
 export default (
   state = {
-    income: {}
+    income: {},
+    selectedCategories: []
   },
   action
 ) => {
@@ -61,6 +68,11 @@ export default (
       return [...state, action.income];
     case SET_INCOME:
       return action.income;
+    case FILTER_INCOME:
+      return {
+        ...state,
+        selectedCategories: action.income
+      };
     default:
       return state;
   }
