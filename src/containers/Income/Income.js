@@ -2,13 +2,33 @@ import React from 'react';
 import MultiSelect from '../../components/MultiSelect';
 import IncomeList from '../../components/IncomeList';
 
-const Income = ({ income, categories }) => {
-  return (
-    <div>
-      <IncomeList />
-      <MultiSelect categories={categories} />
-    </div>
-  );
-};
+class Income extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    let filtered =
+      this.props.income.length &&
+      this.props.income.filter(item =>
+        item.categories.find(i => this.props.selected.includes(i))
+      );
+
+    console.log(filtered);
+    console.log(this.props.selected);
+
+    return (
+      <div>
+        <IncomeList
+          income={
+            this.props.selected.length === 0 ? this.props.income : filtered
+          }
+          selected={this.props.selected}
+        />
+        <MultiSelect categories={this.props.categories} />
+      </div>
+    );
+  }
+}
 
 export default Income;

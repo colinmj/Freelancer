@@ -20,15 +20,6 @@ class IncomeContainer extends React.Component {
     this.props.dispatch(setRenderedCategories(cats));
   }
 
-  onDispatchSelect = (income, categories) => {
-    const filtered = income.filter(item => {
-      return item.categories.find(i => categories.includes(i));
-    });
-    console.log(filtered);
-
-    this.props.dispatch(filterIncome(filtered));
-  };
-
   render() {
     const { renderedCategories, selectedCategories, income } = this.props;
 
@@ -36,7 +27,7 @@ class IncomeContainer extends React.Component {
       <Income
         // select={this.onCategoriesSelect}
         categories={renderedCategories}
-        // selected={selectedCategories}
+        selected={selectedCategories}
         // filter={this.onCategoriesSelect}
         income={income}
         // dispatchSelect={this.onDispatchSelect}
@@ -46,7 +37,7 @@ class IncomeContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  income: state.income,
+  income: state.income.income,
   categories: state.categories.categories,
   renderedCategories: state.categories.renderedCategories,
   selectedCategories: state.income.selectedCategories

@@ -65,9 +65,15 @@ export default (
 ) => {
   switch (action.type) {
     case ADD_INCOME:
-      return [...state, action.income];
+      return {
+        ...state,
+        income: action.income
+      }
     case SET_INCOME:
-      return action.income;
+      return {
+        ...state,
+        income: action.income
+      };
     case FILTER_INCOME:
       return {
         ...state,

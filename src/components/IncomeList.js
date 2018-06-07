@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+
 import ListItem from './ListItem';
 // import { filteredIncome } from '../helpers/filter';
 import { filterIncome } from '../redux/modules/income';
@@ -16,6 +16,7 @@ class IncomeList extends React.Component {
   }
 
   render() {
+    console.log(this.props.selected);
     return (
       <div>
         <h1> List of Income </h1>
@@ -29,9 +30,4 @@ class IncomeList extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  income: state.income,
-  selectedCategories: state.categories.selectedCategories
-});
-
-export default connect(mapStateToProps)(IncomeList);
+export default IncomeList;
