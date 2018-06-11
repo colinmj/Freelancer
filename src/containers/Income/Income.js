@@ -8,21 +8,22 @@ class Income extends React.Component {
   }
 
   render() {
-    let filtered =
-      this.props.income.length &&
-      this.props.income.filter(item =>
-        item.categories.find(i => this.props.selected.includes(i))
-      );
+    // let filtered =
+    //   this.props.income.length &&
+    //   this.props.income.filter(item =>
+    //     item.categories.find(i => this.props.selected.includes(i))
+    //   );
 
-    console.log(filtered);
-    console.log(this.props.selected);
+    // console.log(filtered);
+    // console.log(this.props.selected);
 
     return (
       <div>
         <IncomeList
-          income={
-            this.props.selected.length === 0 ? this.props.income : filtered
-          }
+          // income={
+          //   this.props.selected.length === 0 ? this.props.income : filtered
+          // }
+          income={this.props.income}
           selected={this.props.selected}
         />
         <MultiSelect categories={this.props.categories} />

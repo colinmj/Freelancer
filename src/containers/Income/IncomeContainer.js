@@ -8,8 +8,6 @@ import {
 } from '../../redux/modules/categories';
 import Income from './Income';
 import { objectToArray } from '../../helpers/category';
-import { Slide } from '@material-ui/core';
-import { filteredIncome } from '../../helpers/filter';
 
 class IncomeContainer extends React.Component {
   componentDidMount() {
@@ -23,13 +21,19 @@ class IncomeContainer extends React.Component {
   render() {
     const { renderedCategories, selectedCategories, income } = this.props;
 
+    let filtered =
+      income.length &&
+      income.filter(item =>
+        item.categories.find(i => selectedCategories.includes(i))
+      );
+
     return (
       <Income
         // select={this.onCategoriesSelect}
         categories={renderedCategories}
         selected={selectedCategories}
         // filter={this.onCategoriesSelect}
-        income={income}
+        income={selectedCategories.length === 0 ? income : filtered}
         // dispatchSelect={this.onDispatchSelect}
       />
     );
