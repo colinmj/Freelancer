@@ -12,8 +12,6 @@ class MultipleSelect extends React.Component {
     categories: []
   };
 
-  componentDidMount() {}
-
   handleChange = (event, index, values) => {
     this.props.dispatch(filterExpenses(event.target.value));
     console.log(this.props);

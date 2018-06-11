@@ -1,7 +1,6 @@
 import React from 'react';
-
 import ListItem from './ListItem';
-// import { filteredIncome } from '../helpers/filter';
+
 import { filterIncome } from '../redux/modules/income';
 
 class IncomeList extends React.Component {

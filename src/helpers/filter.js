@@ -1,15 +1,31 @@
-const cats = ['tuna', 'pickles'];
+import moment from 'moment';
 
-const objs = [
-  { name: 'Colin', age: 26, likes: ['tuna', 'cheese'] },
-  { name: 'Alex', age: 45, likes: ['chips', 'ass'] },
-  { name: 'Chris', age: 20, likes: ['pickles', 'tits'] }
-];
+const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
+  return expenses
+    .filter(expense => {
+      const createdAtMoment = moment(expense.createdAt);
+      const startDateMatch = startDate
+        ? startDate.isSameOrBefore(createdAtMoment, 'day')
+        : true;
 
-export const filteredIncome = (arr1, arr2) => {
-  return arr1.filter(obj => {
-    return obj.categories && obj.categories.find(i => arr2.includes(i));
-  });
+      const endDateMatch = endDate
+        ? endDate.isSameOrAfter(createdAtMoment, 'day')
+        : true;
+
+      const textMatch = expense.description
+        .toLowerCase()
+        .includes(text.toLowerCase());
+
+      return startDateMatch && endDateMatch && textMatch;
+    })
+    .sort((a, b) => {
+      if (sortBy === 'date') {
+        return a.createdAt < b.createdAt ? 1 : -1;
+      }
+      if (sortBy === 'amount') {
+        return a.amount < b.amount ? 1 : -1;
+      }
+    });
 };
 
-console.log(filteredIncome(objs, cats));
+export default getVisibleExpenses;

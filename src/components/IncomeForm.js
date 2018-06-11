@@ -5,8 +5,6 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import { connect } from 'react-redux';
 
-// import MultiSelect from '../components/MultiSelect';
-
 import {
   setSelectedCategories,
   asyncAddCategories,
@@ -95,10 +93,6 @@ class IncomeForm extends React.Component {
   };
 
   render() {
-    // const { categories } = this.props;
-    // console.log(this.renderCategories());
-    // console.log(names);
-
     return (
       <div>
         <form onSubmit={this.onSubmitForm}>

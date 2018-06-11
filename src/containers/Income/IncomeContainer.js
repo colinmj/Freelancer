@@ -29,12 +29,9 @@ class IncomeContainer extends React.Component {
 
     return (
       <Income
-        // select={this.onCategoriesSelect}
         categories={renderedCategories}
         selected={selectedCategories}
-        // filter={this.onCategoriesSelect}
         income={selectedCategories.length === 0 ? income : filtered}
-        // dispatchSelect={this.onDispatchSelect}
       />
     );
   }
