@@ -4,6 +4,7 @@ const ADD_EXPENSE = 'ADD_EXPENSE';
 const SET_EXPENSES = 'SET_EXPENSES';
 const FILTER_EXPENSESS = 'FILTER_EXPENSES';
 const EDIT_EXPENSES = 'EDIT_EXPENSES';
+const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 
 export const addExpense = expense => ({
   type: ADD_EXPENSE,
@@ -24,6 +25,11 @@ export const editExpenses = (id, updates) => ({
   type: EDIT_EXPENSES,
   id,
   updates
+});
+
+export const removeExpense = ({ id }) => ({
+  type: REMOVE_EXPENSE,
+  id
 });
 
 export const asyncAddExpense = expenseData => {
@@ -81,6 +87,16 @@ export const asyncEditExpenses = (id, updates) => {
   };
 };
 
+export const asyncRemoveExpense = ({ id }) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return db
+      .ref(`users/${uid}/expenses/${id}`)
+      .remove()
+      .then(dispatch(removeExpense({ id })));
+  };
+};
+
 export default (
   state = {
     expense: {},
@@ -108,6 +124,11 @@ export default (
       return {
         ...state,
         expense: action.updates
+      };
+    case REMOVE_EXPENSE:
+      return {
+        ...state,
+        expense: state.expense.filter(item => item.id !== action.id)
       };
     default:
       return state;

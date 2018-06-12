@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ExpenseForm from './ExpenseForm';
-import { asyncSetExpenses, asyncEditExpenses } from '../redux/modules/expense';
+import {
+  asyncSetExpenses,
+  asyncEditExpenses,
+  asyncRemoveExpense
+} from '../redux/modules/expense';
 
 class EditExpense extends React.Component {
   constructor(props) {
@@ -17,12 +21,18 @@ class EditExpense extends React.Component {
     console.log(expense);
     this.props.dispatch(asyncEditExpenses(this.props.expense.id, expense));
   };
+  expenseRemove = () => {
+    this.props.dispatch(asyncRemoveExpense({ id: this.props.expense.id }));
+  };
   render() {
     return (
-      <ExpenseForm
-        expense={this.props.expense}
-        expenseSubmit={this.expensesSubmit}
-      />
+      <div>
+        <ExpenseForm
+          expense={this.props.expense}
+          expenseSubmit={this.expensesSubmit}
+        />
+        <button onClick={this.expenseRemove}>Remove this Expense</button>
+      </div>
     );
   }
 }
