@@ -8,6 +8,7 @@ import {
 } from '../../redux/modules/categories';
 import { asyncSetExpenses } from '../../redux/modules/expense';
 import { objectToArray } from '../../helpers/category';
+import filterItems from '../../helpers/filter';
 
 class ExpensesContainer extends React.Component {
   componentDidMount() {
@@ -36,7 +37,9 @@ class ExpensesContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  expenses: state.expense.expense,
+  expenses:
+    state.expense.expense.length > 0 &&
+    filterItems(state.expense.expense, state.filters),
   categories: state.categories.categories,
   renderedCategories: state.categories.renderedCategories,
   selectedCategories: state.expense.selectedCategories

@@ -8,6 +8,7 @@ import {
 } from '../../redux/modules/categories';
 import Income from './Income';
 import { objectToArray } from '../../helpers/category';
+import filterItems from '../../helpers/filter';
 
 class IncomeContainer extends React.Component {
   componentDidMount() {
@@ -38,7 +39,9 @@ class IncomeContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  income: state.income.income,
+  income:
+    state.income.income.length > 0 &&
+    filterItems(state.income.income, state.filters),
   categories: state.categories.categories,
   renderedCategories: state.categories.renderedCategories,
   selectedCategories: state.income.selectedCategories
