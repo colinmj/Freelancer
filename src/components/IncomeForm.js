@@ -130,7 +130,11 @@ class IncomeForm extends React.Component {
             value={this.state.categories}
           />
 
-          <button>Add</button>
+          <button
+            disabled={!(this.state.title !== '' && this.state.amount !== '')}
+          >
+            Add
+          </button>
         </form>
       </div>
     );

@@ -8,6 +8,7 @@ class AddExpenseContainer extends React.Component {
   expenseSubmit = expense => {
     console.log(expense);
     this.props.dispatch(asyncAddExpense(expense));
+    this.props.history.push('/expenses');
   };
 
   render() {

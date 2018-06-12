@@ -8,6 +8,7 @@ class AddIncomeContainer extends React.Component {
   incomeSubmit = income => {
     console.log(income);
     this.props.dispatch(asyncAddIncome(income));
+    this.props.history.push('/income');
   };
   render() {
     return <AddIncome incomeSubmit={this.incomeSubmit} />;

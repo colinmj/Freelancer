@@ -20,9 +20,11 @@ class EditExpense extends React.Component {
   expensesSubmit = expense => {
     console.log(expense);
     this.props.dispatch(asyncEditExpenses(this.props.expense.id, expense));
+    this.props.history.push('/expenses');
   };
   expenseRemove = () => {
     this.props.dispatch(asyncRemoveExpense({ id: this.props.expense.id }));
+    this.props.history.push('/expenses');
   };
   render() {
     return (

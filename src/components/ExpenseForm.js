@@ -100,8 +100,6 @@ class ExpenseForm extends React.Component {
 
   render() {
     const { categories } = this.props;
-    // console.log(this.renderCategories());
-    // console.log(names);
 
     return (
       <div>
@@ -137,7 +135,11 @@ class ExpenseForm extends React.Component {
             value={this.state.categories}
           />
 
-          <button>Add</button>
+          <button
+            disabled={!(this.state.title !== '' && this.state.amount !== '')}
+          >
+            Add
+          </button>
         </form>
       </div>
     );

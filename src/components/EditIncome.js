@@ -20,10 +20,12 @@ class EditIncome extends React.Component {
   incomeSubmit = income => {
     console.log(income);
     this.props.dispatch(asyncEditIncome(this.props.income.id, income));
+    this.props.history.push('/income');
   };
 
   incomeDelete = () => {
     this.props.dispatch(asyncRemoveIncome({ id: this.props.income.id }));
+    this.props.history.push('/income');
   };
   render() {
     return (
