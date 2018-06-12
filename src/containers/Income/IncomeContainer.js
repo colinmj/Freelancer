@@ -24,8 +24,10 @@ class IncomeContainer extends React.Component {
 
     let filtered =
       income.length &&
-      income.filter(item =>
-        item.categories.find(i => selectedCategories.includes(i))
+      income.filter(
+        item =>
+          item.categories.length &&
+          item.categories.find(i => selectedCategories.includes(i))
       );
 
     return (

@@ -23,8 +23,10 @@ class ExpensesContainer extends React.Component {
 
     let filtered =
       expenses.length &&
-      expenses.filter(item =>
-        item.categories.find(i => selectedCategories.includes(i))
+      expenses.filter(
+        item =>
+          item.categories.length &&
+          item.categories.find(i => selectedCategories.includes(i))
       );
 
     return (
