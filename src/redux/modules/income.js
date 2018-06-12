@@ -4,6 +4,7 @@ const ADD_INCOME = 'ADD_INCOME';
 const SET_INCOME = 'SET_INCOME';
 const FILTER_INCOME = 'FILTER_INCOME';
 const EDIT_INCOME = 'EDIT_INCOME';
+const REMOVE_INCOME = 'REMOVE_INCOME';
 
 export const addIncome = income => ({
   type: ADD_INCOME,
@@ -24,6 +25,11 @@ export const editIncome = (id, updates) => ({
   type: EDIT_INCOME,
   id,
   updates
+});
+
+export const removeIncome = ({ id }) => ({
+  type: REMOVE_INCOME,
+  id
 });
 
 export const asyncAddIncome = (income = {}) => {
@@ -73,6 +79,16 @@ export const asyncEditIncome = (id, updates) => {
   };
 };
 
+export const asyncRemoveIncome = ({ id }) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return db
+      .ref(`users/${uid}/income/${id}`)
+      .remove()
+      .then(dispatch(removeIncome({ id })));
+  };
+};
+
 export default (
   state = {
     income: {},
@@ -100,6 +116,11 @@ export default (
       return {
         ...state,
         income: action.updates
+      };
+    case REMOVE_INCOME:
+      return {
+        ...state,
+        income: state.income.filter(item => item.id !== action.id)
       };
     default:
       return state;

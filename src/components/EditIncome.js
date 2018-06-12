@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import IncomeForm from './IncomeForm';
-import { asyncSetIncome, asyncEditIncome } from '../redux/modules/income';
+import {
+  asyncSetIncome,
+  asyncEditIncome,
+  asyncRemoveIncome
+} from '../redux/modules/income';
 
 class EditIncome extends React.Component {
   constructor(props) {
@@ -17,9 +21,19 @@ class EditIncome extends React.Component {
     console.log(income);
     this.props.dispatch(asyncEditIncome(this.props.income.id, income));
   };
+
+  incomeDelete = () => {
+    this.props.dispatch(asyncRemoveIncome({ id: this.props.income.id }));
+  };
   render() {
     return (
-      <IncomeForm income={this.props.income} incomeSubmit={this.incomeSubmit} />
+      <div>
+        <IncomeForm
+          income={this.props.income}
+          incomeSubmit={this.incomeSubmit}
+        />
+        <button onClick={this.incomeDelete}>Remove This Income</button>
+      </div>
     );
   }
 }
