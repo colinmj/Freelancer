@@ -16,13 +16,15 @@ class IncomeForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      amount: '',
-      created: moment(),
-      description: '',
-      selectedCategories: [],
+      title: this.props.income ? this.props.income.title : '',
+      amount: this.props.income
+        ? (this.props.income.amount / 100).toString()
+        : '',
+      created: this.props.income ? moment(this.props.income.created) : moment(),
+      description: this.props.income ? this.props.income.description : '',
+      selectedCategories: [], // is this doing anything?
       calendarFocused: false,
-      categories: '',
+      categories: this.props.income ? this.props.income.categories : '',
       error: ''
     };
   }
@@ -93,6 +95,7 @@ class IncomeForm extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <form onSubmit={this.onSubmitForm}>

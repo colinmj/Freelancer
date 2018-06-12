@@ -3,6 +3,7 @@ import db from '../../firebase/firebase';
 const ADD_INCOME = 'ADD_INCOME';
 const SET_INCOME = 'SET_INCOME';
 const FILTER_INCOME = 'FILTER_INCOME';
+const EDIT_INCOME = 'EDIT_INCOME';
 
 export const addIncome = income => ({
   type: ADD_INCOME,
@@ -17,6 +18,12 @@ export const setIncome = income => ({
 export const filterIncome = (income = []) => ({
   type: FILTER_INCOME,
   income
+});
+
+export const editIncome = (id, updates) => ({
+  type: EDIT_INCOME,
+  id,
+  updates
 });
 
 export const asyncAddIncome = (income = {}) => {
@@ -56,6 +63,16 @@ export const asyncSetIncome = () => {
   };
 };
 
+export const asyncEditIncome = (id, updates) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return db
+      .ref(`users/${uid}/income/${id}`)
+      .update(updates)
+      .then(dispatch(editIncome(id, updates)));
+  };
+};
+
 export default (
   state = {
     income: {},
@@ -78,6 +95,11 @@ export default (
       return {
         ...state,
         selectedCategories: action.income
+      };
+    case EDIT_INCOME:
+      return {
+        ...state,
+        income: action.updates
       };
     default:
       return state;
