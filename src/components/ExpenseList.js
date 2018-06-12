@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ListItem from './ListItem';
+import ExpenseListItem from './ExpenseListItem';
 
 const ExpenseList = ({ expenses }) => {
   return (
@@ -10,7 +10,7 @@ const ExpenseList = ({ expenses }) => {
       {expenses &&
         expenses.length > 0 &&
         expenses.map(item => {
-          return <ListItem {...item} />;
+          return <ExpenseListItem {...item} />;
         })}
     </div>
   );

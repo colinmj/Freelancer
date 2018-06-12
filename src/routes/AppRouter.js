@@ -9,6 +9,7 @@ import Income from '../containers/Income';
 import AddIncome from '../containers/AddIncome';
 import AddExpense from '../containers/AddExpense';
 import EditIncome from '../components/EditIncome';
+import EditExpense from '../components/EditExpense';
 // import Categories from '../containers/Categories';
 import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
@@ -33,6 +34,11 @@ const AppRouter = () => (
         <PrivateRoute
           path="/editincome/:id"
           component={EditIncome}
+          exact={true}
+        />
+        <PrivateRoute
+          path="/editexpense/:id"
+          component={EditExpense}
           exact={true}
         />
         {/* <PrivateRoute path="/categories" component={Categories} exact={true} /> */}

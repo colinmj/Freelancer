@@ -3,6 +3,7 @@ import db from '../../firebase/firebase';
 const ADD_EXPENSE = 'ADD_EXPENSE';
 const SET_EXPENSES = 'SET_EXPENSES';
 const FILTER_EXPENSESS = 'FILTER_EXPENSES';
+const EDIT_EXPENSES = 'EDIT_EXPENSES';
 
 export const addExpense = expense => ({
   type: ADD_EXPENSE,
@@ -17,6 +18,12 @@ export const setExpenses = expense => ({
 export const filterExpenses = (expense = []) => ({
   type: FILTER_EXPENSESS,
   expense
+});
+
+export const editExpenses = (id, updates) => ({
+  type: EDIT_EXPENSES,
+  id,
+  updates
 });
 
 export const asyncAddExpense = expenseData => {
@@ -64,6 +71,16 @@ export const asyncSetExpenses = () => {
   };
 };
 
+export const asyncEditExpenses = (id, updates) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+    return db
+      .ref(`users/${uid}/expenses/${id}`)
+      .update(updates)
+      .then(dispatch(editExpenses(id, updates)));
+  };
+};
+
 export default (
   state = {
     expense: {},
@@ -86,6 +103,11 @@ export default (
       return {
         ...state,
         selectedCategories: action.expense
+      };
+    case EDIT_EXPENSES:
+      return {
+        ...state,
+        expense: action.updates
       };
     default:
       return state;

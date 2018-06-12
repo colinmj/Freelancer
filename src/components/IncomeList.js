@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from './ListItem';
+import IncomeListItem from './IncomeListItem';
 
 import { filterIncome } from '../redux/modules/income';
 
@@ -17,7 +17,7 @@ class IncomeList extends React.Component {
         {this.props.income &&
           this.props.income.length > 0 &&
           this.props.income.map(item => {
-            return <ListItem {...item} />;
+            return <IncomeListItem {...item} />;
           })}
       </div>
     );

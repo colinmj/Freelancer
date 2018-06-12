@@ -18,13 +18,17 @@ class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      amount: '',
-      created: moment(),
-      description: '',
-      selectedCategories: [],
+      title: this.props.expense ? this.props.expense.title : '',
+      amount: this.props.expense
+        ? (this.props.expense.amount / 100).toString()
+        : '',
+      created: this.props.expense
+        ? moment(this.props.expense.created)
+        : moment(),
+      description: this.props.expense ? this.props.expense.description : '',
+      selectedCategories: [], // is this doing anything?
       calendarFocused: false,
-      categories: '',
+      categories: this.props.expense ? this.props.expense.categories : '',
       error: ''
     };
   }
@@ -71,10 +75,6 @@ class ExpenseForm extends React.Component {
       categories
     });
   };
-
-  // onCategoriesChange = selectedOption => {
-  //   this.props.dispatch(setSelectedCategories(selectedOption));
-  // };
 
   renderCategories = arr => {
     let newArr = [];

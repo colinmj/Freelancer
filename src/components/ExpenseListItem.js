@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import numeral from 'numeral';
 
-const ListItem = ({ title, amount, created, description, id }) => {
+const ExpenseListItem = ({ title, amount, created, description, id }) => {
   return (
     <div>
-      <Link to={`/editincome/${id}`}>
+      <Link to={`/editexpense/${id}`}>
         <h3>{title}</h3>
       </Link>
       <p>{numeral(amount / 100).format('$0,0.00')} </p>
@@ -16,4 +16,4 @@ const ListItem = ({ title, amount, created, description, id }) => {
   );
 };
 
-export default ListItem;
+export default ExpenseListItem;
