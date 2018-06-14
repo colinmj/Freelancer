@@ -13,10 +13,16 @@ import filterItems from '../../helpers/filter';
 class ExpensesContainer extends React.Component {
   componentDidMount() {
     this.props.dispatch(asyncSetExpenses(this.props.expenses));
-    const cats = this.props.categories
-      ? objectToArray(this.props.categories)
-      : null;
-    this.props.dispatch(setRenderedCategories(cats));
+
+    if (
+      this.props.renderedCategories.length === 0 &&
+      this.props.categories.length
+    ) {
+      const cats = this.props.categories
+        ? objectToArray(this.props.categories)
+        : null;
+      this.props.dispatch(setRenderedCategories(cats));
+    }
   }
   render() {
     const { expenses, renderedCategories, selectedCategories } = this.props;

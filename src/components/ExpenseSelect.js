@@ -18,7 +18,7 @@ class MultipleSelect extends React.Component {
   };
 
   render() {
-    const { selected, expenses, categories } = this.props;
+    const { selected, expenses, categories, rendered } = this.props;
 
     return (
       <div>
@@ -41,7 +41,8 @@ class MultipleSelect extends React.Component {
 
 const mapStateToProps = state => ({
   expenses: state.income,
-  selected: state.expense.selectedCategories
+  selected: state.expense.selectedCategories,
+  rendered: state.categories.renderedCategories
 });
 
 export default connect(mapStateToProps)(MultipleSelect);

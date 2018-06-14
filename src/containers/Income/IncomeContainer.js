@@ -13,14 +13,28 @@ import filterItems from '../../helpers/filter';
 class IncomeContainer extends React.Component {
   componentDidMount() {
     this.props.dispatch(asyncSetIncome(this.props.income));
-    const cats = this.props.categories
-      ? objectToArray(this.props.categories)
-      : null;
-    this.props.dispatch(setRenderedCategories(cats));
+    console.log(this.props.renderedCategories);
+    console.log(this.props.categories);
+
+    if (
+      this.props.renderedCategories.length === 0 &&
+      this.props.categories.length
+    ) {
+      const cats = this.props.categories
+        ? objectToArray(this.props.categories)
+        : null;
+      console.log(cats);
+      this.props.dispatch(setRenderedCategories(cats));
+    }
   }
 
   render() {
-    const { renderedCategories, selectedCategories, income } = this.props;
+    const {
+      renderedCategories,
+      selectedCategories,
+      income,
+      categories
+    } = this.props;
 
     let filtered =
       income.length &&

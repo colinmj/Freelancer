@@ -7,7 +7,7 @@ const ExpenseTotal = ({ expenses }) => {
       {expenses.length > 0 ? (
         expenses.length && total(expenses)
       ) : (
-        <p> No Dice! </p>
+        <p> Nothing To Display! </p>
       )}
     </div>
   );

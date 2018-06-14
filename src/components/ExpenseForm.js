@@ -5,12 +5,11 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import { connect } from 'react-redux';
 
-// import MultiSelect from '../components/MultiSelect';
-
 import {
   setSelectedCategories,
   asyncAddCategories,
-  asyncSetCategories
+  asyncSetCategories,
+  setRenderedCategories
 } from '../redux/modules/categories';
 import { objectToArray } from '../helpers/category';
 
@@ -96,6 +95,19 @@ class ExpenseForm extends React.Component {
     });
     this.props.dispatch(asyncAddCategories(this.state.categories));
     this.props.dispatch(asyncSetCategories());
+
+    let willRenderCategories = [];
+    let array = objectToArray(this.props.categories);
+    array.map(item => willRenderCategories.push(item));
+    willRenderCategories = willRenderCategories.concat(this.state.categories);
+    willRenderCategories = willRenderCategories.filter(
+      (item, index) => willRenderCategories.indexOf(item) === index
+    );
+    willRenderCategories = willRenderCategories.filter(
+      item => item !== ' ' && item !== ''
+    );
+
+    this.props.dispatch(setRenderedCategories(willRenderCategories));
   };
 
   render() {

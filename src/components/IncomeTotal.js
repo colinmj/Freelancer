@@ -7,7 +7,11 @@ const IncomeTotal = ({ income }) => {
   }
   return (
     <div>
-      {income.length > 0 ? income.length && total(income) : <p> No Dice! </p>}
+      {income.length > 0 ? (
+        income.length && total(income)
+      ) : (
+        <p> Nothing To Display! </p>
+      )}
     </div>
   );
 };

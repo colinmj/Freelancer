@@ -6,7 +6,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import createHistory from 'history/createBrowserHistory';
+
 import { filterIncome } from '../redux/modules/income';
+import {
+  setRenderedCategories,
+  asyncSetCategories
+} from '../redux/modules/categories';
+import { objectToArray } from '../helpers/category';
 
 class MultipleSelect extends React.Component {
   state = {
@@ -18,9 +25,15 @@ class MultipleSelect extends React.Component {
     console.log(this.props);
   };
 
-  render() {
-    const { selected, income, categories } = this.props;
+  componentDidMount() {
+    const history = createHistory();
+    console.log(history);
+  }
 
+  render() {
+    const { selected, income, categories, rendered } = this.props;
+
+    console.log(rendered);
     return (
       <div>
         <Select
@@ -42,7 +55,9 @@ class MultipleSelect extends React.Component {
 
 const mapStateToProps = state => ({
   income: state.income,
-  selected: state.income.selectedCategories
+  selected: state.income.selectedCategories,
+  newcats: state.categories.categories,
+  rendered: state.categories.renderedCategories
 });
 
 export default connect(mapStateToProps)(MultipleSelect);

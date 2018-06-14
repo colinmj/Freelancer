@@ -71,9 +71,13 @@ export default (
 ) => {
   switch (action.type) {
     case ADD_CATEGORIES:
-      return [...state, action.categories];
+      return {
+        ...state,
+        categories: action.categories
+      };
     case SET_CATEGORIES:
       return {
+        ...state,
         categories: action.categories
       };
 
