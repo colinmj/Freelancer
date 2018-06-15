@@ -1,0 +1,17 @@
+.add_income_container {
+  height: 90vh;
+  width: 100vw;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('/images/building.jpg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  h1 {
+    color: #fff;
+    font-family: $font__open;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+}

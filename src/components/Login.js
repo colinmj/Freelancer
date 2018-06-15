@@ -4,8 +4,8 @@ import { startLogin, startFacebookLogin } from '../redux/modules/auth';
 
 const Login = ({ startLogin, startFacebook }) => {
   return (
-    <div>
-      <div>
+    <div className="login-layout">
+      <div className="login-layout_text">
         <h1>Welcome to Freelancer!</h1>
         <p>
           This is an app where you can simply keep track of your income and
@@ -14,8 +14,14 @@ const Login = ({ startLogin, startFacebook }) => {
         </p>
       </div>
 
-      <button onClick={startLogin}> Login with Google </button>
-      <button onClick={startFacebook}> Login with Facebook </button>
+      <div className="login-layout_buttons">
+        <button onClick={startLogin}>
+          Login with <i class="fa fa-google" aria-hidden="true" />{' '}
+        </button>
+        <button onClick={startFacebook}>
+          Login with <i class="fa fa-facebook-official" aria-hidden="true" />
+        </button>
+      </div>
     </div>
   );
 };
@@ -25,7 +31,4 @@ const mapDispatchToProps = dispatch => ({
   startFacebook: () => dispatch(startFacebookLogin())
 });
 
-export default connect(
-  undefined,
-  mapDispatchToProps
-)(Login);
+export default connect(undefined, mapDispatchToProps)(Login);

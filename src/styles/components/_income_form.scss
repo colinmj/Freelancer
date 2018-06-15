@@ -1,0 +1,48 @@
+.income_form {
+  display: flex;
+  width: 80vw;
+  justify-content: space-between;
+  margin-top: 70px;
+  align-items: center;
+
+  input {
+    border-radius: 5px;
+    border: none;
+    height: 35px;
+    font-size: 14px;
+    padding-left: 5px;
+    font-family: $font__open;
+  }
+  input::placeholder {
+    color: $color__blue;
+    text-transform: uppercase;
+    font-family: $font__open;
+    padding-left: 5px;
+    font-size: 14px;
+  }
+
+  textarea {
+    border-radius: 5px;
+    border: none;
+    height: 35px;
+  }
+  textarea::placeholder {
+    color: $color__blue;
+    text-transform: uppercase;
+    font-family: $font__open;
+    padding-left: 5px;
+    font-size: 14px;
+  }
+
+  .income_form_button {
+    height: 35px;
+    width: 100px;
+    border-radius: 5px;
+    background: $button__gray;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-family: $font__open;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,38 @@
+.login-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: url('/images/aerial.jpg');
+  background-size: cover;
+  .login-layout_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 200px;
+    width: 50vw;
+    background: fade-out($color: #fff, $amount: 0.3);
+
+    h1 {
+      font-family: $font__open;
+    }
+    p {
+      max-width: 75%;
+      text-align: center;
+      font-family: $font__open;
+    }
+  }
+  .login-layout_buttons {
+    margin-top: 50px;
+    width: 30vw;
+    display: flex;
+    justify-content: space-around;
+    button {
+      @include button_gray;
+    }
+  }
+}

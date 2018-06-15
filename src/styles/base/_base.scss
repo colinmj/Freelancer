@@ -1,3 +1,19 @@
 .is-active {
   font-weight: bold;
 }
+
+//fonts
+$font__open: 'Open Sans', 'sans-serif';
+
+//colors
+$button__gray: #aba6a9;
+$color__blue: #4066b8;
+$color__purple: #a828a6;
+
+@mixin button_gray {
+  background: $button__gray;
+  width: 150px;
+  height: 35px;
+  font-size: 14px;
+  font-family: $font__open;
+}

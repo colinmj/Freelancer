@@ -1,0 +1,28 @@
+.dashboard_container {
+  height: 90vh;
+  width: 100vw;
+  background: url('/images/arch.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .dashboard_link {
+    border-radius: 5px;
+    height: 100px;
+    width: 300px;
+    background: fade-out($color: #fff, $amount: 0.3);
+    margin: 0 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      color: $color__blue;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 24px;
+      font-family: $font__open;
+    }
+  }
+}
