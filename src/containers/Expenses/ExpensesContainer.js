@@ -2,12 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Expenses from './Expenses';
-import {
-  setSelectedCategories,
-  setRenderedCategories
-} from '../../redux/modules/categories';
+import { setRenderedCategories } from '../../redux/modules/categories';
 import { asyncSetExpenses } from '../../redux/modules/expense';
-import { objectToArray } from '../../helpers/category';
+import { objectToArray, filterCategories } from '../../helpers/category';
 import filterItems from '../../helpers/filter';
 
 class ExpensesContainer extends React.Component {
@@ -18,10 +15,10 @@ class ExpensesContainer extends React.Component {
       this.props.renderedCategories.length === 0 &&
       this.props.categories.length
     ) {
-      const cats = this.props.categories
+      const categories = this.props.categories
         ? objectToArray(this.props.categories)
         : null;
-      this.props.dispatch(setRenderedCategories(cats));
+      this.props.dispatch(setRenderedCategories(categories));
     }
   }
   render() {
@@ -29,11 +26,8 @@ class ExpensesContainer extends React.Component {
 
     let filtered =
       expenses.length &&
-      expenses.filter(
-        item =>
-          item.categories.length &&
-          item.categories.find(i => selectedCategories.includes(i))
-      );
+      selectedCategories.length &&
+      filterCategories(expenses, selectedCategories);
 
     return (
       <Expenses

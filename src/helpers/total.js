@@ -7,11 +7,11 @@ export const total = arr => {
   arr.map(item => {
     total.push(item.amount);
   });
-  let hi = total.reduce((a, b) => {
+  let totalAmount = total.reduce((a, b) => {
     return a + b;
   });
-  hi = numeral(hi / 100).format('$0,0.00');
+  totalAmount = numeral(totalAmount / 100).format('$0,0.00');
   return `Displaying ${arr.length} 
     ${arr.length > 1 ? items : item}
-   with a whopping total of ${hi}`;
+   with a whopping total of ${totalAmount}`;
 };

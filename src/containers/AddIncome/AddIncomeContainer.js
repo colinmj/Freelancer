@@ -7,7 +7,7 @@ import { setRenderedCategories } from '../../redux/modules/categories';
 
 class AddIncomeContainer extends React.Component {
   incomeSubmit = income => {
-    this.props.dispatch(asyncAddIncome(income));
+    this.props.asyncAddIncome(income);
     this.props.history.push('/income');
   };
   render() {
@@ -15,10 +15,8 @@ class AddIncomeContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  income: state.income,
-  categories: state.categories.categories,
-  rendered: state.categories.renderedCategories
+const mapDispatchToProps = dispatch => ({
+  asyncAddIncome: income => dispatch(asyncAddIncome(income))
 });
 
-export default connect(mapStateToProps)(AddIncomeContainer);
+export default connect(undefined, mapDispatchToProps)(AddIncomeContainer);

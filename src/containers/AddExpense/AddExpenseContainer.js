@@ -6,8 +6,7 @@ import { asyncAddExpense } from '../../redux/modules/expense';
 
 class AddExpenseContainer extends React.Component {
   expenseSubmit = expense => {
-    console.log(expense);
-    this.props.dispatch(asyncAddExpense(expense));
+    this.props.asyncAddExpense(expense);
     this.props.history.push('/expenses');
   };
 
@@ -16,8 +15,8 @@ class AddExpenseContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  expense: state.expense
+const mapDispatchToProps = dispatch => ({
+  asyncAddExpense: expense => dispatch(asyncAddExpense(expense))
 });
 
-export default connect(mapStateToProps)(AddExpenseContainer);
+export default connect(undefined, mapDispatchToProps)(AddExpenseContainer);

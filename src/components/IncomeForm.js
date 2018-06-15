@@ -6,12 +6,11 @@ import 'react-dates/lib/css/_datepicker.css';
 import { connect } from 'react-redux';
 
 import {
-  setSelectedCategories,
   asyncAddCategories,
   asyncSetCategories,
   setRenderedCategories
 } from '../redux/modules/categories';
-import { objectToArray } from '../helpers/category';
+import { objectToArray, renderCategories } from '../helpers/category';
 
 class IncomeForm extends React.Component {
   constructor(props) {
@@ -96,18 +95,10 @@ class IncomeForm extends React.Component {
 
     let willRenderCategories = [];
     let array = objectToArray(this.props.categories);
-    array.map(item => willRenderCategories.push(item));
-    willRenderCategories = willRenderCategories.concat(this.state.categories);
 
-    willRenderCategories = willRenderCategories.filter((item, index) => {
-      return willRenderCategories.indexOf(item) === index;
-    });
+    const rendered = renderCategories(array, this.state.categories);
 
-    willRenderCategories = willRenderCategories.filter(
-      item => item !== ' ' && item !== ''
-    );
-
-    this.props.dispatch(setRenderedCategories(willRenderCategories));
+    this.props.dispatch(setRenderedCategories(rendered));
   };
 
   render() {
@@ -158,7 +149,6 @@ class IncomeForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  selectedCategories: state.categories.selectedCategories,
   categories: state.categories.categories
 });
 

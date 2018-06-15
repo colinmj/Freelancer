@@ -2,7 +2,6 @@ import db from '../../firebase/firebase';
 
 const ADD_CATEGORIES = 'ADD_CATEGORIES';
 const SET_CATEGORIES = 'SET_CATEGORIES';
-const SELECTED_CATEGORIES = 'SELECTED_CATEGORIES';
 const RENDERED_CATEGORIES = 'RENDERED_CATEGORIES';
 
 export const addCategories = categories => ({
@@ -12,11 +11,6 @@ export const addCategories = categories => ({
 
 export const setCategories = categories => ({
   type: SET_CATEGORIES,
-  categories
-});
-
-export const setSelectedCategories = categories => ({
-  type: SELECTED_CATEGORIES,
   categories
 });
 
@@ -34,7 +28,6 @@ export const asyncAddCategories = (categories = []) => {
       .then(ref => {
         dispatch(
           addCategories({
-            // id: ref.key,
             ...categories
           })
         );
@@ -52,7 +45,6 @@ export const asyncSetCategories = () => {
         let categories = [];
         snapshot.forEach(snap => {
           categories.push({
-            // id: snap.key,
             ...snap.val()
           });
         });
@@ -64,7 +56,6 @@ export const asyncSetCategories = () => {
 export default (
   state = {
     categories: [],
-    selectedCategories: [],
     renderedCategories: []
   },
   action
@@ -81,11 +72,6 @@ export default (
         categories: action.categories
       };
 
-    case SELECTED_CATEGORIES:
-      return {
-        ...state,
-        selectedCategories: action.categories
-      };
     case RENDERED_CATEGORIES:
       return {
         ...state,

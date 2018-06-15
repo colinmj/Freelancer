@@ -1,30 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { asyncSetIncome, filterIncome } from '../../redux/modules/income';
+import { asyncSetIncome } from '../../redux/modules/income'; //filter income was here
 import {
   setSelectedCategories,
   setRenderedCategories
 } from '../../redux/modules/categories';
 import Income from './Income';
-import { objectToArray } from '../../helpers/category';
+import { objectToArray, filterCategories } from '../../helpers/category';
 import filterItems from '../../helpers/filter';
 
 class IncomeContainer extends React.Component {
   componentDidMount() {
     this.props.dispatch(asyncSetIncome(this.props.income));
-    console.log(this.props.renderedCategories);
-    console.log(this.props.categories);
 
     if (
       this.props.renderedCategories.length === 0 &&
       this.props.categories.length
     ) {
-      const cats = this.props.categories
+      const categories = this.props.categories
         ? objectToArray(this.props.categories)
         : null;
-      console.log(cats);
-      this.props.dispatch(setRenderedCategories(cats));
+
+      this.props.dispatch(setRenderedCategories(categories));
     }
   }
 
@@ -38,11 +36,8 @@ class IncomeContainer extends React.Component {
 
     let filtered =
       income.length &&
-      income.filter(
-        item =>
-          item.categories.length &&
-          item.categories.find(i => selectedCategories.includes(i))
-      );
+      selectedCategories.length &&
+      filterCategories(income, selectedCategories);
 
     return (
       <Income

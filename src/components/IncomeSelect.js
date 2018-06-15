@@ -25,11 +25,6 @@ class MultipleSelect extends React.Component {
     console.log(this.props);
   };
 
-  componentDidMount() {
-    const history = createHistory();
-    console.log(history);
-  }
-
   render() {
     const { selected, income, categories, rendered } = this.props;
 

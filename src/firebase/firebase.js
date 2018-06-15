@@ -1,7 +1,5 @@
 import * as firebase from 'firebase';
 
-// what this does is it takes all of the named exports and calls it firebase
-
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
