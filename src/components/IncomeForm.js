@@ -105,7 +105,7 @@ class IncomeForm extends React.Component {
     console.log(this.props);
     return (
       <div>
-        <form onSubmit={this.onSubmitForm} className="income_form">
+        <form onSubmit={this.onSubmitForm} className="add_form">
           <input
             placeholder="Title"
             type="text"
@@ -138,7 +138,7 @@ class IncomeForm extends React.Component {
           />
 
           <button
-            className="income_form_button"
+            className="add_form_button"
             disabled={!(this.state.title !== '' && this.state.amount !== '')}
           >
             Add

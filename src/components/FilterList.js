@@ -30,15 +30,18 @@ class FilterList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="filter_list">
         <input
+          className="title_input"
           type="text"
+          placeholder="Text Filter"
           value={this.props.filters.text}
           onChange={e => {
             this.props.dispatch(setTextFilter(e.target.value));
           }}
         />
         <select
+          className="filter_select"
           value={this.props.filters.sortBy}
           onChange={e => {
             console.log(e.target.value);

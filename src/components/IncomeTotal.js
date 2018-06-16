@@ -2,11 +2,8 @@ import React from 'react';
 import { total } from '../helpers/total';
 
 const IncomeTotal = ({ income }) => {
-  {
-    income.length && console.log(total(income));
-  }
   return (
-    <div>
+    <div className="total">
       {income.length > 0 ? (
         income.length && total(income)
       ) : (

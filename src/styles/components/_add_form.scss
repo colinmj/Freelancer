@@ -1,4 +1,4 @@
-.income_form {
+.add_form {
   display: flex;
   width: 80vw;
   justify-content: space-between;
@@ -32,9 +32,28 @@
     font-family: $font__open;
     padding-left: 5px;
     font-size: 14px;
+    padding-top: 8px;
+  }
+  .SingleDatePickerInput {
+    max-height: 35px !important;
+    padding: 0;
+    border-radius: 5px;
+    .DateInput {
+      max-height: 35px;
+      padding: 0;
+      border-radius: 5px;
+    }
+    .DateInput_input {
+      max-height: 35px;
+      padding: 0;
+      border-radius: 5px;
+
+      color: $color__blue;
+      font-family: $font__open;
+    }
   }
 
-  .income_form_button {
+  .add_form_button {
     height: 35px;
     width: 100px;
     border-radius: 5px;

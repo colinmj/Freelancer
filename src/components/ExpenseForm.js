@@ -107,7 +107,7 @@ class ExpenseForm extends React.Component {
 
     return (
       <div>
-        <form onSubmit={this.onSubmitForm}>
+        <form onSubmit={this.onSubmitForm} className="add_form">
           <input
             placeholder="Title"
             type="text"
@@ -140,6 +140,7 @@ class ExpenseForm extends React.Component {
           />
 
           <button
+            className="add_form_button"
             disabled={!(this.state.title !== '' && this.state.amount !== '')}
           >
             Add

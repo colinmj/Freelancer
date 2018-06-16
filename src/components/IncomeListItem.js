@@ -5,7 +5,7 @@ import numeral from 'numeral';
 
 const IncomeListItem = ({ title, amount, created, description, id }) => {
   return (
-    <div>
+    <div className="list_item">
       <Link to={`/editincome/${id}`}>
         <h3>{title}</h3>
       </Link>
