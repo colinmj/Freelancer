@@ -106,43 +106,48 @@ class IncomeForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.onSubmitForm} className="add_form">
-          <input
-            placeholder="Title"
-            type="text"
-            value={this.state.title}
-            onChange={this.onTitleChange}
-          />
-          <input
-            placeholder="Amount"
-            onChange={this.onAmountChange}
-            type="number"
-            value={this.state.amount}
-          />
-          <SingleDatePicker
-            date={this.state.created}
-            onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
-            onFocusChange={this.onFocusChange}
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-          />
-          <textarea
-            placeholder="Description"
-            onChange={this.onDescriptionChange}
-            value={this.state.description}
-          />
-          <input
-            placeholder="Categories"
-            onChange={this.onCategoriesChange}
-            value={this.state.categories}
-          />
+          <div className="form_container">
+            <input
+              placeholder="Title"
+              type="text"
+              value={this.state.title}
+              onChange={this.onTitleChange}
+            />
+            <input
+              placeholder="Amount"
+              onChange={this.onAmountChange}
+              type="number"
+              value={this.state.amount}
+            />
+            <textarea
+              placeholder="Description"
+              onChange={this.onDescriptionChange}
+              value={this.state.description}
+            />
+          </div>
 
-          <button
-            className="add_form_button"
-            disabled={!(this.state.title !== '' && this.state.amount !== '')}
-          >
-            Add
-          </button>
+          <div className="form_container">
+            <SingleDatePicker
+              date={this.state.created}
+              onDateChange={this.onDateChange}
+              focused={this.state.calendarFocused}
+              onFocusChange={this.onFocusChange}
+              numberOfMonths={1}
+              isOutsideRange={() => false}
+            />
+            <input
+              placeholder="Categories"
+              onChange={this.onCategoriesChange}
+              value={this.state.categories}
+            />
+
+            <button
+              className="add_form_button"
+              disabled={!(this.state.title !== '' && this.state.amount !== '')}
+            >
+              Add
+            </button>
+          </div>
         </form>
       </div>
     );
