@@ -8,7 +8,12 @@
 
   .display_filters {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     margin-top: 40px;
+    @include tablet {
+      flex-direction: row;
+    }
   }
 }
 
@@ -18,20 +23,24 @@
   border-bottom: 1px solid $color__light-gray;
   display: flex;
   justify-content: space-between;
-  width: 60vw;
   height: 14vh;
   align-items: center;
 
   background: fade-out($color: #fff, $amount: 0.4);
 
   .title_date {
-    width: 10vw;
+    // width: 10vw;
+    width: 50%;
+
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-around;
     p {
       margin-left: 3%;
+    }
+    @include tablet {
+      width: 15vw;
     }
   }
 
@@ -51,10 +60,14 @@
 
 // list container
 .list_container {
+  width: 90vw;
   display: flex;
   flex-direction: column;
   margin-top: 40px;
   border: 3px solid $color__light-gray;
+  @include tablet {
+    width: 70vw;
+  }
 
   .label_container {
     display: flex;
@@ -69,20 +82,35 @@
 }
 
 .total {
+  display: flex;
+  flex-direction: column;
   margin-top: 25px;
+  margin-right: 5px;
   font-family: $font__open;
   color: $color__blue;
   font-size: 22px;
+
+  a {
+    color: $color__blue;
+    margin-bottom: 30px;
+  }
 }
 
 // filter form
 
 .filter_list {
   display: flex;
-  width: 50vw;
+  flex-direction: column;
+  height: 20vh;
   justify-content: space-between;
-  align-items: center;
   margin-right: 30px;
+  margin-bottom: 20px;
+  @include tablet {
+    flex-direction: row;
+    width: 75vw;
+    max-width: 650px;
+    height: 10vh;
+  }
   .title_input {
     height: 25px;
     font-family: $font__open;
@@ -110,21 +138,20 @@
   }
   .DateRangePicker {
     max-height: 35px !important;
-    border-radius: 5px;
 
     .DateRangePickerInput {
       max-height: 35px !important;
-      border-radius: 5px;
+
       .DateInput {
         max-height: 35px !important;
         .DateInput_input {
           padding: 0;
-          border-radius: 5px;
         }
       }
       .DateRangePickerInput_clearDates {
-        padding: 0;
-        top: 45% !important;
+        @include tablet {
+          top: 35% !important;
+        }
       }
       .DateRangePickerInput_arrow {
         padding-right: 10px !important;
@@ -135,4 +162,72 @@
 
 .MuiSelect-root-1 {
   width: 100px !important;
+}
+
+// not found
+
+.not_found {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $color__blue;
+
+  p {
+    font-family: $font__open;
+    color: #fff;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+// about page
+
+.about_page {
+  font-family: $font__open;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    color: $button__gray;
+    letter-spacing: 1.5px;
+  }
+  p {
+    color: $color__blue;
+    max-width: 75%;
+    line-height: 30px;
+  }
+}
+
+//category warning
+.category_warning {
+  margin: 0;
+  color: #fff;
+  font-family: $font__open;
+  position: fixed;
+  top: 250px;
+}
+
+.form_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  display: none;
+  @include tablet {
+    display: block;
+  }
 }

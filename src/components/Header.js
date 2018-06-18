@@ -11,13 +11,16 @@ const Header = ({ startLogout }) => (
       <NavLink to="/dashboard" activeClassName="is-active">
         Home
       </NavLink>
-      <NavLink to="/addincome" activeClassName="is-active">
+      <NavLink to="/about" activeClassName="is-active">
+        About
+      </NavLink>
+      {/* <NavLink to="/addincome" activeClassName="is-active">
         Add Income
       </NavLink>
 
       <NavLink to="/addexpense" activeClassName="is-active">
         Add Expense
-      </NavLink>
+      </NavLink> */}
 
       <button onClick={startLogout}>Logout</button>
     </div>

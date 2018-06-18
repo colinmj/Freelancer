@@ -13,7 +13,7 @@ const IncomeListItem = ({ title, amount, created, description, id }) => {
         <p>{moment(created).format('MMMM Do, YYYY')}</p>
       </div>
 
-      <p>{description}</p>
+      <p className="description">{description}</p>
       <p>{numeral(amount / 100).format('$0,0.00')} </p>
     </div>
   );

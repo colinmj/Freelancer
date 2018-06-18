@@ -25,7 +25,8 @@ class IncomeForm extends React.Component {
       selectedCategories: [], // is this doing anything?
       calendarFocused: false,
       categories: this.props.income ? this.props.income.categories : '',
-      error: ''
+      error: '',
+      focus: false
     };
   }
 
@@ -55,6 +56,12 @@ class IncomeForm extends React.Component {
         created
       });
     }
+  };
+
+  categoryFocus = () => {
+    this.setState({
+      focus: !this.state.focus
+    });
   };
 
   onDescriptionChange = e => {
@@ -104,7 +111,13 @@ class IncomeForm extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <div>
+      <div className="form_wrapper">
+        {this.state.focus && (
+          <p className="category_warning">
+            Please comma separate your categories so that it works and you don't
+            get mad at me :)
+          </p>
+        )}
         <form onSubmit={this.onSubmitForm} className="add_form">
           <div className="form_container">
             <input
@@ -136,6 +149,8 @@ class IncomeForm extends React.Component {
               isOutsideRange={() => false}
             />
             <input
+              onFocus={this.categoryFocus}
+              onBlur={this.categoryFocus}
               placeholder="Categories"
               onChange={this.onCategoriesChange}
               value={this.state.categories}

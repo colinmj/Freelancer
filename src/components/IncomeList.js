@@ -10,16 +10,21 @@ class IncomeList extends React.Component {
 
   render() {
     return (
-      <div className="list_container">
-        <div className="label_container">
-          <p>Income</p>
-          <p>Amount</p>
-        </div>
-        {this.props.income &&
-          this.props.income.length > 0 &&
-          this.props.income.map(item => {
-            return <IncomeListItem {...item} />;
-          })}
+      <div>
+        {this.props.income && (
+          <div className="list_container">
+            <div className="label_container">
+              <p>Income</p>
+              <p>Amount</p>
+            </div>
+
+            {this.props.income &&
+              this.props.income.length > 0 &&
+              this.props.income.map(item => {
+                return <IncomeListItem {...item} />;
+              })}
+          </div>
+        )}
       </div>
     );
   }

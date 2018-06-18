@@ -13,12 +13,17 @@
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    height: 200px;
-    width: 50vw;
+    height: 350px;
+    width: 80vw;
     background: fade-out($color: #fff, $amount: 0.3);
+    @include tablet {
+      height: 200px;
+      width: 50vw;
+    }
 
     h1 {
       font-family: $font__open;
+      text-align: center;
     }
     p {
       max-width: 75%;
@@ -28,9 +33,12 @@
   }
   .login-layout_buttons {
     margin-top: 50px;
-    width: 30vw;
+    width: 80vw;
     display: flex;
     justify-content: space-around;
+    @include tablet {
+      width: 40vw;
+    }
     button {
       @include button_gray;
     }

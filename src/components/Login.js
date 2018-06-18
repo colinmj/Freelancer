@@ -9,8 +9,7 @@ const Login = ({ startLogin, startFacebook }) => {
         <h1>Welcome to Freelancer!</h1>
         <p>
           This is an app where you can simply keep track of your income and
-          expenses without all the bells and whistles that come with some other
-          software! Clean and simple.
+          expenses without all the bells and whistles, clean and simple.
         </p>
       </div>
 

@@ -18,3 +18,9 @@ $color__light-gray: #e6e6e6;
   font-size: 14px;
   font-family: $font__open;
 }
+
+@mixin tablet {
+  @media all and (min-width: 750px) {
+    @content;
+  }
+}

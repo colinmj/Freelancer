@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import createHistory from 'history/createBrowserHistory';
@@ -31,6 +32,7 @@ class MultipleSelect extends React.Component {
     console.log(rendered);
     return (
       <div>
+        <InputLabel htmlFor="age-helper">Categories</InputLabel>
         <Select
           multiple={true}
           value={selected ? selected : []}
