@@ -9,6 +9,7 @@ $font__open: 'Open Sans', 'sans-serif';
 $button__gray: #aba6a9;
 $color__blue: #4066b8;
 $color__purple: #a828a6;
+$color__light-gray: #e6e6e6;
 
 @mixin button_gray {
   background: $button__gray;

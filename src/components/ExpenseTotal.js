@@ -3,7 +3,7 @@ import { total } from '../helpers/total';
 
 const ExpenseTotal = ({ expenses }) => {
   return (
-    <div>
+    <div className="total">
       {expenses.length > 0 ? (
         expenses.length && total(expenses)
       ) : (

@@ -6,11 +6,14 @@ import ExpenseTotal from '../../components/ExpenseTotal';
 
 const Expenses = ({ expenses, categories }) => {
   return (
-    <div>
+    <div className="display_container">
       <ExpenseTotal expenses={expenses} />
+      <div className="display_filters">
+        <FilterList />
+        <MultiSelect categories={categories} />
+      </div>
+
       <ExpenseList expenses={expenses} />
-      <MultiSelect categories={categories} />
-      <FilterList />
     </div>
   );
 };

@@ -34,7 +34,7 @@ class FilterList extends React.Component {
         <input
           className="title_input"
           type="text"
-          placeholder="Text Filter"
+          placeholder="Search"
           value={this.props.filters.text}
           onChange={e => {
             this.props.dispatch(setTextFilter(e.target.value));
