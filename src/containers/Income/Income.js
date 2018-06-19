@@ -17,7 +17,9 @@ const Income = ({ income, selected, categories }) => {
         </div>
       </div>
 
-      <IncomeList income={income} selected={selected} />
+      <div className="content-container">
+        <IncomeList income={income} selected={selected} />
+      </div>
     </div>
   );
 };

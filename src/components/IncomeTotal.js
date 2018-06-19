@@ -4,16 +4,18 @@ import { NavLink } from 'react-router-dom';
 
 const IncomeTotal = ({ income }) => {
   return (
-    <div className="content-container">
-      <div className="total">
-        <NavLink to="/addincome" activeClassName="is-active">
-          Add Income
-        </NavLink>
-        {income.length > 0 ? (
-          income.length && total(income)
-        ) : (
-          <p> Nothing To Display! </p>
-        )}
+    <div className="page-header">
+      <div className="content-container">
+        <div className="total">
+          <NavLink to="/addincome" activeClassName="is-active">
+            Add Income
+          </NavLink>
+          {income.length > 0 ? (
+            income.length && total(income)
+          ) : (
+            <p> Nothing To Display! </p>
+          )}
+        </div>
       </div>
     </div>
   );

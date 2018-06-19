@@ -11,3 +11,93 @@
 .multi {
   padding-top: 10px;
 }
+
+.page-header {
+  background: $color__light-gray;
+  height: 120px;
+
+  a {
+    color: $color__blue;
+    font-size: 22px;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+.total {
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  justify-content: space-around;
+}
+.list_item {
+  border-bottom: 1px solid $color__light-gray;
+  display: flex;
+  justify-content: space-between;
+  height: 14vh;
+  align-items: center;
+  background: fade-out($color: #fff, $amount: 0.4);
+
+  .title_date {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+    p {
+      margin-left: 3%;
+    }
+    @include tablet {
+      width: 15vw;
+    }
+  }
+
+  h3 {
+    margin: 0;
+    padding-left: 5px;
+  }
+  a {
+    color: $color__blue;
+
+    text-decoration: none;
+  }
+  p {
+    margin-right: 2%;
+  }
+}
+
+// list container
+.list_container {
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  border: 3px solid $color__light-gray;
+  @include tablet {
+    width: 70vw;
+  }
+
+  .label_container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $color__light-gray;
+    p {
+      margin: 20px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.description {
+  display: none;
+  @include tablet {
+    display: block;
+  }
+}
+
+.remove-button {
+  @include button;
+  background: $button__gray;
+  margin-bottom: 20px;
+}

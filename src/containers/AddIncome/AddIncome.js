@@ -3,7 +3,7 @@ import IncomeForm from '../../components/IncomeForm';
 
 const AddIncome = ({ incomeSubmit }) => {
   return (
-    <div className="add_container">
+    <div className="content-container">
       <h1>Add Income </h1>
       <IncomeForm incomeSubmit={incomeSubmit} />
     </div>

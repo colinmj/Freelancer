@@ -111,60 +111,62 @@ class IncomeForm extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <div>
-        {this.state.focus && (
-          <p className="category_warning">
-            Please comma separate your categories so that it works and you don't
-            get mad at me :)
-          </p>
-        )}
-        <form onSubmit={this.onSubmitForm} className="add_form">
-          <div className="form_container">
-            <input
-              placeholder="Title"
-              type="text"
-              value={this.state.title}
-              onChange={this.onTitleChange}
-            />
-            <input
-              placeholder="Amount"
-              onChange={this.onAmountChange}
-              type="number"
-              value={this.state.amount}
-            />
-            <textarea
-              placeholder="Description"
-              onChange={this.onDescriptionChange}
-              value={this.state.description}
-            />
-          </div>
+      <form className="form" onSubmit={this.onSubmitForm}>
+        <div>
+          {this.state.focus && (
+            <p className="category_warning">
+              Please comma separate your categories so that it works and you
+              don't get mad at me :)
+            </p>
+          )}
+        </div>
+        <input
+          className="text-input"
+          placeholder="Title"
+          type="text"
+          value={this.state.title}
+          onChange={this.onTitleChange}
+        />
+        <input
+          className="text-input"
+          placeholder="Amount"
+          onChange={this.onAmountChange}
+          type="number"
+          value={this.state.amount}
+        />
+        <textarea
+          className="textarea"
+          placeholder="Description"
+          onChange={this.onDescriptionChange}
+          value={this.state.description}
+        />
 
-          <div className="form_container">
-            <SingleDatePicker
-              date={this.state.created}
-              onDateChange={this.onDateChange}
-              focused={this.state.calendarFocused}
-              onFocusChange={this.onFocusChange}
-              numberOfMonths={1}
-              isOutsideRange={() => false}
-            />
-            <input
-              onFocus={this.categoryFocus}
-              onBlur={this.categoryFocus}
-              placeholder="Categories"
-              onChange={this.onCategoriesChange}
-              value={this.state.categories}
-            />
+        <SingleDatePicker
+          date={this.state.created}
+          onDateChange={this.onDateChange}
+          focused={this.state.calendarFocused}
+          onFocusChange={this.onFocusChange}
+          numberOfMonths={1}
+          isOutsideRange={() => false}
+        />
+        <input
+          className="text-input"
+          onFocus={this.categoryFocus}
+          onBlur={this.categoryFocus}
+          placeholder="Categories"
+          onChange={this.onCategoriesChange}
+          value={this.state.categories}
+        />
 
-            <button
-              className="add_form_button"
-              disabled={!(this.state.title !== '' && this.state.amount !== '')}
-            >
-              Add
-            </button>
-          </div>
-        </form>
-      </div>
+        <div>
+          <button
+            className="add-form-button"
+            disabled={!(this.state.title !== '' && this.state.amount !== '')}
+          >
+            Add
+          </button>
+        </div>
+      </form>
     );
   }
 }

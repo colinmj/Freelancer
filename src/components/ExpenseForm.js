@@ -113,60 +113,64 @@ class ExpenseForm extends React.Component {
     const { categories } = this.props;
 
     return (
-      <div className="form_wrapper">
-        {this.state.focus && (
-          <p className="category_warning">
-            Please comma separate your categories so that it works and you don't
-            get mad at me :)
-          </p>
-        )}
-        <form onSubmit={this.onSubmitForm} className="add_form">
-          <div className="form_container">
-            <input
-              placeholder="Title"
-              type="text"
-              value={this.state.title}
-              onChange={this.onTitleChange}
-            />
-            <input
-              placeholder="Amount"
-              onChange={this.onAmountChange}
-              type="number"
-              value={this.state.amount}
-            />
-            <textarea
-              placeholder="Description"
-              onChange={this.onDescriptionChange}
-              value={this.state.description}
-            />
-          </div>
-          <div className="form_container">
-            <SingleDatePicker
-              date={this.state.created}
-              onDateChange={this.onDateChange}
-              focused={this.state.calendarFocused}
-              onFocusChange={this.onFocusChange}
-              numberOfMonths={1}
-              isOutsideRange={() => false}
-            />
+      <form onSubmit={this.onSubmitForm} className="form">
+        <div>
+          {this.state.focus && (
+            <p className="category_warning">
+              Please comma separate your categories so that it works and you
+              don't get mad at me :)
+            </p>
+          )}
+        </div>
 
-            <input
-              placeholder="Categories"
-              onChange={this.onCategoriesChange}
-              value={this.state.categories}
-              onFocus={this.categoryFocus}
-              onBlur={this.categoryFocus}
-            />
+        <input
+          className="text-input"
+          placeholder="Title"
+          type="text"
+          value={this.state.title}
+          onChange={this.onTitleChange}
+        />
+        <input
+          className="text-input"
+          placeholder="Amount"
+          onChange={this.onAmountChange}
+          type="number"
+          value={this.state.amount}
+        />
+        <textarea
+          className="textarea"
+          placeholder="Description"
+          onChange={this.onDescriptionChange}
+          value={this.state.description}
+        />
 
-            <button
-              className="add_form_button"
-              disabled={!(this.state.title !== '' && this.state.amount !== '')}
-            >
-              Add
-            </button>
-          </div>
-        </form>
-      </div>
+        <SingleDatePicker
+          date={this.state.created}
+          onDateChange={this.onDateChange}
+          focused={this.state.calendarFocused}
+          onFocusChange={this.onFocusChange}
+          numberOfMonths={1}
+          isOutsideRange={() => false}
+        />
+
+        <input
+          className="text-input"
+          placeholder="Categories"
+          onChange={this.onCategoriesChange}
+          value={this.state.categories}
+          onFocus={this.categoryFocus}
+          onBlur={this.categoryFocus}
+        />
+
+        <div>
+          <button
+            className="add-form-button"
+            disabled={!(this.state.title !== '' && this.state.amount !== '')}
+          >
+            Add
+          </button>
+        </div>
+      </form>
     );
   }
 }

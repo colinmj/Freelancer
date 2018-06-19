@@ -29,12 +29,15 @@ class EditIncome extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div className="content-container">
+        <h1>Edit Income</h1>
         <IncomeForm
           income={this.props.income}
           incomeSubmit={this.incomeSubmit}
         />
-        <button onClick={this.incomeDelete}>Remove This Income</button>
+        <button className="remove-button" onClick={this.incomeDelete}>
+          Remove This Income
+        </button>
       </div>
     );
   }

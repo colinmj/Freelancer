@@ -3,6 +3,10 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+button {
+  cursor: pointer;
+}
+
 .is-active {
   font-weight: bold;
 }
@@ -15,15 +19,21 @@ $color__blue: #4066b8;
 $color__purple: #a828a6;
 $color__light-gray: #e6e6e6;
 
-@mixin button_gray {
-  background: $button__gray;
-  width: 150px;
-  height: 35px;
-  font-size: 14px;
-}
-
 @mixin tablet {
   @media all and (min-width: 750px) {
     @content;
+  }
+}
+
+@mixin button {
+  width: 100px;
+  height: 40px;
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  background: $color__blue;
+  @include tablet {
+    width: 150px;
+    height: 50px;
   }
 }

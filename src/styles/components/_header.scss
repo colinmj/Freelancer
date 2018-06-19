@@ -20,7 +20,11 @@
     width: 90vw;
     @include tablet {
       width: 60vw;
-      justify-content: space-around;
+      justify-content: center;
+
+      a {
+        margin: 0 10px;
+      }
     }
     a {
       color: #fff;

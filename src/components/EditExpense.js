@@ -28,12 +28,15 @@ class EditExpense extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div className="content-container">
+        <h1>Edit Expense </h1>
         <ExpenseForm
           expense={this.props.expense}
           expenseSubmit={this.expensesSubmit}
         />
-        <button onClick={this.expenseRemove}>Remove this Expense</button>
+        <button className="remove-button" onClick={this.expenseRemove}>
+          Remove this Expense
+        </button>
       </div>
     );
   }

@@ -13,5 +13,5 @@ export const total = arr => {
   totalAmount = numeral(totalAmount / 100).format('$0,0.00');
   return `Displaying ${arr.length} 
     ${arr.length > 1 ? items : item}
-   with a whopping total of ${totalAmount}`;
+   with a total of ${totalAmount}`;
 };
