@@ -22,25 +22,31 @@
     }
 
     h1 {
-      font-family: $font__open;
       text-align: center;
     }
     p {
       max-width: 75%;
       text-align: center;
-      font-family: $font__open;
     }
   }
   .login-layout_buttons {
-    margin-top: 50px;
-    width: 80vw;
+    margin: 50px 10px 0 10px;
+    width: 70vw;
     display: flex;
     justify-content: space-around;
     @include tablet {
       width: 40vw;
     }
     button {
-      @include button_gray;
+      width: 100px;
+      height: 40px;
+      font-size: 14px;
+      border: none;
+      background: $color__blue;
+      @include tablet {
+        width: 150px;
+        height: 50px;
+      }
     }
   }
 }

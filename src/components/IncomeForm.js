@@ -111,7 +111,7 @@ class IncomeForm extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <div className="form_wrapper">
+      <div>
         {this.state.focus && (
           <p className="category_warning">
             Please comma separate your categories so that it works and you don't

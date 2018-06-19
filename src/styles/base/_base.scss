@@ -1,9 +1,13 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
 .is-active {
   font-weight: bold;
 }
 
 //fonts
-$font__open: 'Open Sans', 'sans-serif';
 
 //colors
 $button__gray: #aba6a9;
@@ -16,7 +20,6 @@ $color__light-gray: #e6e6e6;
   width: 150px;
   height: 35px;
   font-size: 14px;
-  font-family: $font__open;
 }
 
 @mixin tablet {

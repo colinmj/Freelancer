@@ -1,0 +1,16 @@
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  @include tablet {
+    flex-direction: row;
+    margin-bottom: 30px;
+  }
+}
+.input-group__item {
+  margin-bottom: 10px;
+  @include tablet {
+    margin: 0 15px 0 0;
+  }
+}

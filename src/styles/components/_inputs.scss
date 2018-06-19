@@ -1,0 +1,21 @@
+.text-input {
+  border: 1px solid #cacccd;
+  height: 50px;
+
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.select {
+  @extend .text-input;
+}
+
+.textarea {
+  @extend .text-input;
+  height: 70px;
+}
+
+.SingleDatePickerInput {
+  display: block !important;
+}

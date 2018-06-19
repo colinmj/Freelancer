@@ -6,11 +6,15 @@ import IncomeTotal from '../../components/IncomeTotal';
 
 const Income = ({ income, selected, categories }) => {
   return (
-    <div className="display_container">
+    <div>
       <IncomeTotal income={income} />
-      <div className="display_filters">
-        <FilterList />
-        <MultiSelect categories={categories} />
+      <div className="content-container">
+        <div className="display_filters">
+          <FilterList />
+          <div className="multi">
+            <MultiSelect categories={categories} />
+          </div>
+        </div>
       </div>
 
       <IncomeList income={income} selected={selected} />
