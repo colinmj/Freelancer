@@ -3,7 +3,6 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-
   align-items: center;
 
   .display_filters {
@@ -31,7 +30,6 @@
   .title_date {
     // width: 10vw;
     width: 50%;
-
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -112,6 +110,7 @@
     height: 10vh;
   }
   .title_input {
+    border: 1px solid $color__light-gray;
     height: 25px;
     font-family: $font__open;
     font-size: 14px;
@@ -211,11 +210,15 @@
 
 //category warning
 .category_warning {
-  margin: 0;
-  color: #fff;
-  font-family: $font__open;
-  position: fixed;
-  top: 250px;
+  display: none;
+  @include tablet {
+    display: block;
+    margin: 0;
+    color: #fff;
+    font-family: $font__open;
+    position: fixed;
+    top: 250px;
+  }
 }
 
 .form_wrapper {

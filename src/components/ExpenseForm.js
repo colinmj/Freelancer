@@ -27,7 +27,8 @@ class ExpenseForm extends React.Component {
       selectedCategories: [], // is this doing anything?
       calendarFocused: false,
       categories: this.props.expense ? this.props.expense.categories : '',
-      error: ''
+      error: '',
+      focused: false
     };
   }
 
@@ -43,6 +44,12 @@ class ExpenseForm extends React.Component {
         amount
       });
     }
+  };
+
+  categoryFocus = () => {
+    this.setState({
+      focus: !this.state.focus
+    });
   };
 
   onFocusChange = ({ focused }) => {
@@ -106,7 +113,13 @@ class ExpenseForm extends React.Component {
     const { categories } = this.props;
 
     return (
-      <div>
+      <div className="form_wrapper">
+        {this.state.focus && (
+          <p className="category_warning">
+            Please comma separate your categories so that it works and you don't
+            get mad at me :)
+          </p>
+        )}
         <form onSubmit={this.onSubmitForm} className="add_form">
           <div className="form_container">
             <input
@@ -141,6 +154,8 @@ class ExpenseForm extends React.Component {
               placeholder="Categories"
               onChange={this.onCategoriesChange}
               value={this.state.categories}
+              onFocus={this.categoryFocus}
+              onBlur={this.categoryFocus}
             />
 
             <button

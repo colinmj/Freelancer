@@ -16,8 +16,12 @@
 
   .header_links {
     display: flex;
-    justify-content: space-around;
-    width: 60vw;
+    justify-content: space-between;
+    width: 90vw;
+    @include tablet {
+      width: 60vw;
+      justify-content: space-around;
+    }
     a {
       color: #fff;
       text-transform: uppercase;
