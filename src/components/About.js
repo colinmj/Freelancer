@@ -21,13 +21,7 @@ const About = () => {
 
       <p>
         I would like to acknowledge <a href="https://mead.io/">Andrew Mead</a> -
-        I completed Andrew's React Developer course on
-        <a href="https://www.udemy.com/"> Udemy </a> where the premise of the
-        final project was an app where you keep track of expenses. As a learning
-        exercise I decided to recreate the app and I added the ability to add
-        income as well and made some other functionality tweaks. There is a lot
-        of Andrews code in here still, and if anyone is interested in learning
-        about development I can highly recommend his courses.
+        I got the idea for this project after completing one of Andrews courses on Udemy
       </p>
     </div>
   );

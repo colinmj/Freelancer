@@ -117,8 +117,7 @@ class ExpenseForm extends React.Component {
         <div>
           {this.state.focus && (
             <p className="category_warning">
-              Please comma separate your categories so that it works and you
-              don't get mad at me :)
+              Please comma separate your categories!
             </p>
           )}
         </div>
